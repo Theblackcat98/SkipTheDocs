@@ -1,0 +1,15 @@
+# This is the ssh client configuration file.
+# It allows you to set options for ssh connections.
+
+Host *
+    ForwardAgent no
+    ForwardX11 no
+    ForwardX11Trusted yes
+    PasswordAuthentication no
+    PubkeyAuthentication yes
+    IdentitiesOnly yes
+    ServerAliveInterval 60
+    ServerAliveCountMax 5
+    ControlMaster auto
+    ControlPath ~/.ssh/sockets/%r@%h-%p
+    ControlPersist 600
