@@ -1,0 +1,226 @@
+
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import ConfigCard from './components/ConfigCard';
+import Modal from './components/Modal';
+import type { ConfigFile, PopularTool } from './types';
+import { POPULAR_TOOLS } from './constants';
+import { DB_CONFIGS } from './data/db';
+import { askAboutConfig } from './services/geminiService';
+
+const App: React.FC = () => {
+  const [configs, setConfigs] = useState<ConfigFile[]>([]);
+  const [isAppLoading, setIsAppLoading] = useState(true);
+  const [filterTerm, setFilterTerm] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeModalConfig, setActiveModalConfig] = useState<(ConfigFile & { content: string }) | null>(null);
+  
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [isAiLoading, setIsAiLoading] = useState(false);
+
+  useEffect(() => {
+    const loadAllConfigs = async () => {
+        try {
+            const configsWithContent = await Promise.all(DB_CONFIGS.map(async (config) => {
+                const response = await fetch(config.filePath);
+                if (!response.ok) {
+                    console.error(`Failed to fetch config file: ${config.filePath}. Status: ${response.status}`);
+                    return { ...config, content: `Error: Could not load file.\n\nPath: ${config.filePath}\nStatus: ${response.status} ${response.statusText}` };
+                }
+                const content = await response.text();
+                if (content.trim() === '') {
+                    console.warn(`Fetched file is empty: ${config.filePath}`);
+                    return { ...config, content: `Warning: The configuration file appears to be empty.` };
+                }
+                return { ...config, content };
+            }));
+            setConfigs(configsWithContent);
+        } catch (error) {
+            console.error("A critical error occurred while loading config files:", error);
+            const errorConfigs = DB_CONFIGS.map(config => ({
+                ...config,
+                content: `Error: A network error occurred while trying to load this file.`
+            }));
+            setConfigs(errorConfigs);
+        } finally {
+            setIsAppLoading(false);
+        }
+    };
+
+    loadAllConfigs();
+  }, []);
+
+  const handleQuickFilter = useCallback((tool: PopularTool) => {
+    setFilterTerm(tool.name);
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+  }, []);
+
+  const openModal = useCallback((config: ConfigFile) => {
+    setActiveModalConfig(config as (ConfigFile & { content: string }));
+    setIsModalOpen(true);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setIsModalOpen(false);
+    setActiveModalConfig(null);
+    setAiResponse(null);
+    setIsAiLoading(false);
+  }, []);
+  
+  const downloadFile = useCallback((content: string, filename: string) => {
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const handleDownload = useCallback((config: ConfigFile) => {
+    if (config.content) {
+      downloadFile(config.content, config.fileName);
+    } else {
+        alert("Cannot download file: content is missing.");
+    }
+  }, [downloadFile]);
+
+  const handleModalDownload = useCallback(() => {
+    if (activeModalConfig) {
+      downloadFile(activeModalConfig.content, activeModalConfig.fileName);
+    }
+  }, [activeModalConfig, downloadFile]);
+
+  const handleAskAI = useCallback(async (question: string) => {
+    if (!activeModalConfig?.content || !question.trim()) return;
+
+    setIsAiLoading(true);
+    setAiResponse(null);
+    try {
+      const response = await askAboutConfig(activeModalConfig.content, question);
+      setAiResponse(response);
+    } catch (error) {
+      console.error(error);
+      setAiResponse('Sorry, an unexpected error occurred while contacting the AI. Please try again.');
+    } finally {
+      setIsAiLoading(false);
+    }
+  }, [activeModalConfig]);
+
+
+  const filteredConfigs = useMemo(() => {
+    if (!filterTerm.trim()) return configs;
+    const lowercasedFilter = filterTerm.toLowerCase();
+    return configs.filter(config => 
+      config.tool.toLowerCase().includes(lowercasedFilter) ||
+      config.fileName.toLowerCase().includes(lowercasedFilter) ||
+      config.description.toLowerCase().includes(lowercasedFilter)
+    );
+  }, [configs, filterTerm]);
+  
+  const clearFilter = () => setFilterTerm('');
+
+  if (isAppLoading) {
+    return (
+      <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-[100]">
+        <div className="flex flex-col items-center gap-4">
+          <svg className="animate-spin h-10 w-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span className="text-white text-lg font-medium">Loading Configurations...</span>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-gray-100 selection:bg-indigo-500 selection:text-white">
+      <Header />
+      <main className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="flex flex-col items-center gap-12">
+          <SearchBar 
+            filterTerm={filterTerm}
+            setFilterTerm={setFilterTerm}
+          />
+
+          <div className="w-full max-w-5xl">
+            <div className="text-center mb-6">
+              <h2 className="text-2xl font-bold text-gray-200">Or start by selecting a tool</h2>
+              <p className="text-gray-400 mt-1">Click a tool to see all available configurations.</p>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {POPULAR_TOOLS.map(tool => (
+                <button
+                  key={tool.name}
+                  onClick={() => handleQuickFilter(tool)}
+                  className="flex flex-col items-center justify-center gap-3 p-4 bg-gray-800 border border-gray-700 rounded-lg hover:bg-gray-700/70 hover:border-indigo-500 transition-all duration-200"
+                >
+                  {tool.icon}
+                  <span className="font-semibold text-sm text-center text-gray-300">{tool.name}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="w-full max-w-6xl mt-8 border-t border-gray-700/50 pt-12">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 px-2">
+              <h2 className="text-3xl font-bold text-gray-100 mb-4 sm:mb-0">Configuration Library</h2>
+               {filterTerm && (
+                 <button 
+                    onClick={clearFilter}
+                    className="text-sm text-indigo-400 hover:text-indigo-300 hover:underline"
+                  >
+                   Clear filter ({filteredConfigs.length} results)
+                 </button>
+               )}
+            </div>
+
+            {filteredConfigs.length > 0 ? (
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {filteredConfigs.map(config => (
+                  <ConfigCard 
+                    key={config.id}
+                    config={config} 
+                    onView={openModal} 
+                    onDownload={handleDownload}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-16 px-6 bg-gray-800/30 border border-dashed border-gray-700 rounded-xl">
+                <svg className="mx-auto h-12 w-12 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <h3 className="mt-2 text-xl font-semibold text-gray-200">No Results Found</h3>
+                <p className="mt-1 text-base text-gray-400">
+                  Your search for "{filterTerm}" did not match any configurations.
+                </p>
+                <button 
+                  onClick={clearFilter}
+                  className="mt-4 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
+                >
+                  Clear Search
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
+      <Modal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        config={activeModalConfig}
+        onDownload={handleModalDownload}
+        onAskAI={handleAskAI}
+        aiResponse={aiResponse}
+        isAiLoading={isAiLoading}
+      />
+    </div>
+  );
+};
+
+export default App;

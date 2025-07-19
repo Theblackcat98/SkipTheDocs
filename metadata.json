@@ -1,0 +1,5 @@
+{
+  "name": "SkipTheDocs",
+  "description": "A searchable database of high-quality configuration files for various development tools. Find and customize configs for Neovim, Tmux, Zsh, and more.",
+  "requestFramePermissions": []
+}
