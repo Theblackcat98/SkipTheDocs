@@ -1,0 +1,6 @@
+#
+# Zathura configuration file
+#
+
+set selection-clipboard clipboard
+set-option -s "font" "monospace normal 10"
