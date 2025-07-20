@@ -4,10 +4,9 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ConfigCard from './components/ConfigCard';
 import Modal from './components/Modal';
-import type { ConfigFile, PopularTool } from './types';
-import { POPULAR_TOOLS } from './constants';
-import { DB_CONFIGS } from './data/db';
-import { askAboutConfig } from './services/geminiService';
+import type { ConfigFile, PopularTool } from './types.ts';
+import { POPULAR_TOOLS } from './constants.tsx';
+import { DB_CONFIGS } from './public/db.ts';
 
 const App: React.FC = () => {
   const [configs, setConfigs] = useState<ConfigFile[]>([]);
@@ -100,7 +99,7 @@ const App: React.FC = () => {
     setIsAiLoading(true);
     setAiResponse(null);
     try {
-      const response = await askAboutConfig(activeModalConfig.content, question);
+      throw new Error("AI assistant is not available.");
       setAiResponse(response);
     } catch (error) {
       console.error(error);
