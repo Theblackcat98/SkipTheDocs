@@ -1,14 +1,14 @@
 import React from 'react';
 import type { PopularTool } from './types.ts';
-import { Code, Terminal, SquareTerminal } from 'lucide-react';
+import { Terminal, SquareTerminal, Fish, Cat, Grid2x2, Ghost } from 'lucide-react';
 
 export const POPULAR_TOOLS: PopularTool[] = [
-  { name: 'Neovim', icon: <Code className="w-8 h-8 text-green-400" /> },
-  { name: 'Tmux', icon: <Terminal className="w-8 h-8 text-blue-400" /> },
+  { name: 'Ghostty', icon: <Ghost className="w-8 h-8 text-green-400" /> },
+  { name: 'Tmux', icon: <Grid2x2 className="w-8 h-8 text-blue-400" /> },
   { name: 'Zsh', icon: <Terminal className="w-8 h-8 text-yellow-400" /> },
-  { name: 'Kitty', icon: <Terminal className="w-8 h-8 text-pink-400" /> },
+  { name: 'Kitty', icon: <Cat className="w-8 h-8 text-pink-400" /> },
   { name: 'Alacritty', icon: <SquareTerminal className="w-8 h-8 text-purple-400" /> },
-  { name: 'Fish', icon: <Terminal className="w-8 h-8 text-red-400" /> },
+  { name: 'Fish', icon: <Fish className="w-8 h-8 text-red-400" /> },
 ];
 
 export const IconCopy = (props: React.SVGProps<SVGSVGElement>) => (

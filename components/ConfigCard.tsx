@@ -1,4 +1,5 @@
 import React from 'react';
+import { Github } from 'lucide-react';
 import type { ConfigFile } from '../types.ts';
 import { IconDownload } from '../constants.tsx';
 
@@ -22,7 +23,7 @@ const ConfigCard: React.FC<ConfigCardProps> = ({ config, onView, onDownload }) =
       </div>
       <div className="p-4 bg-gray-800/80 border-t border-gray-700/50 flex items-center justify-between gap-2 flex-shrink-0">
         <a href={config.repositoryUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
-          GitHub
+          <Github className="w-5 h-5" />
         </a>
         <div className="flex items-center gap-2">
           <button
