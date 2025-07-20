@@ -42,6 +42,8 @@ def main():
     parser.add_argument("-i", "--include", nargs="+", help="Include file patterns (e.g. '*.py' '*.js'). Defaults to common code files if not specified.")
     parser.add_argument("-e", "--exclude", nargs="+", help="Exclude file patterns (e.g. 'tests/*' 'docs/*'). Defaults to test/build directories if not specified.")
     parser.add_argument("-s", "--max-size", type=int, default=100000, help="Maximum file size in bytes (default: 100000, about 100KB).")
+    parser.add_argument("--no-cache", action="store_true", help="Disable caching for LLM calls.")
+    parser.add_argument("--language", default="english", help="Language for the output (default: english).")
 
 
     args = parser.parse_args()
@@ -79,44 +81,10 @@ def main():
     print(f"LLM caching: {'Disabled' if args.no_cache else 'Enabled'}")
 
     # Create the flow instance
-    tutorial_flow = extract_config_flow()
+    config_flow = extract_config_flow()
 
     # Run the flow
-    tutorial_flow.run(shared)
+    config_flow.run(shared)
 
 if __name__ == "__main__":
     main()
-
-
-if __name__ == "__main__":
-    # --- Configuration ---
-    # Define the repository and patterns to use for the test run
-    repo_url = "https://github.com/pydantic/pydantic/tree/6c38dc93f40a47f4d1350adca9ec0d72502e223f/pydantic"
-    include_patterns = {"*.py", "*.md"}
-    exclude_patterns = {"**/test*.py"}
-    max_file_size = 1 * 1024 * 1024  # 1 MB
-
-    # --- Shared State ---
-    # This dictionary simulates the initial state passed to the flow
-    shared_initial = {
-        "repo_url": repo_url,
-        "local_dir": None,  # Not used when repo_url is provided
-        "github_token": os.environ.get("GITHUB_TOKEN"),
-        "include_patterns": include_patterns,
-        "exclude_patterns": exclude_patterns,
-        "max_file_size": max_file_size,
-        "use_cache": True,  # Enable caching for LLM calls
-    }
-
-    # --- Flow Execution ---
-    # Create and run the flow
-    config_flow = extract_config_flow()
-    final_shared_state = config_flow.run(shared_initial)
-
-    # --- Output ---
-    # Print the final generated configuration
-    if final_shared_state and "generated_config" in final_shared_state:
-        print("\n--- Generated Configuration ---")
-        print(final_shared_state["generated_config"])
-    else:
-        print("\n--- Flow finished, but no configuration was generated ---")
