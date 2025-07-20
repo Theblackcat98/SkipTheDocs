@@ -233,41 +233,17 @@ const App: React.FC = () => {
         onDownload={handleModalDownload}
       />
       {isSubmissionFormOpen && (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-          <div className="bg-gray-900 border border-gray-700 rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col overflow-hidden">
-            <header className="flex items-center justify-between p-4 border-b border-gray-700 flex-shrink-0">
-              <h2 className="text-xl font-bold text-gray-100">
-                {submittedConfigData ? "Copy Configuration Data" : "Submit New Configuration"}
-              </h2>
-              <button
-                onClick={() => {
-                  setIsSubmissionFormOpen(false);
-                  setSubmittedConfigData(null);
-                }}
-                className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors"
-                aria-label="Close"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </header>
-            <main className="flex-grow p-4 md:p-6 overflow-y-auto">
-              {submittedConfigData ? (
-                <div className="bg-gray-800 p-4 rounded-md overflow-auto max-h-[70vh]">
-                  <pre className="text-gray-200 whitespace-pre-wrap text-sm">{submittedConfigData}</pre>
-                  <button
-                    onClick={() => navigator.clipboard.writeText(submittedConfigData)}
-                    className="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                    Copy to Clipboard
-                  </button>
-                </div>
-              ) : (
-                <ConfigSubmissionForm onSubmit={handleConfigSubmission} isLoading={isSubmitting} />
-              )}
-            </main>
-          </div>
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+          onClick={() => setIsSubmissionFormOpen(false)}
+        >
+          <ConfigSubmissionForm
+            onClose={() => setIsSubmissionFormOpen(false)}
+            onSubmit={handleConfigSubmission}
+            isLoading={isSubmitting}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-4xl max-h-[90vh]"
+          />
         </div>
       )}
     </div>
