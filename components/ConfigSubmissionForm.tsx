@@ -78,8 +78,7 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl">
-      <h2 className="text-2xl font-bold mb-6 text-gray-100">Submit New Configuration</h2>
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 border border-gray-700 rounded-xl shadow-2xl">
       
       <div className="space-y-4">
         <div>
