@@ -12,7 +12,6 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload }) => {
   const [copied, setCopied] = useState(false);
-  const [question, setQuestion] = useState('');
 
   const handleCopy = useCallback(() => {
     if (config) {
@@ -26,7 +25,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload }) =>
   useEffect(() => {
     if (!isOpen) {
       setCopied(false);
-      setQuestion('');
     }
   }, [isOpen]);
 
@@ -58,7 +56,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload }) =>
       >
         <header className="flex items-center justify-between p-4 border-b border-gray-700 flex-shrink-0">
           <div>
-            <h2 className="text-xl font-bold text-gray-100">{config.tool}</h2>
+            <h2 className="text-xl font-bold text-gray-100">{config.toolName}</h2>
             <p className="text-sm text-indigo-400 font-mono">{config.fileName}</p>
           </div>
           <button onClick={onClose} className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors" aria-label="Close modal">
