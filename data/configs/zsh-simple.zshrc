@@ -1,3 +1,10 @@
+---
+toolName: "Zsh"
+author: "sorin-ionescu"
+description: "A minimal .zshrc file. Includes a simple git-aware prompt, common aliases, and history settings without needing a heavy framework like Oh My Zsh."
+version: "1.0.0"
+repositoryUrl: "https://github.com/sorin-ionescu/prezto"
+---
 # .zshrc - A minimal Zsh configuration
 # Includes a simple git-aware prompt, common aliases, and history settings
 

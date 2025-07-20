@@ -2,6 +2,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { Buffer } from 'buffer';
+
+window.Buffer = Buffer;
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

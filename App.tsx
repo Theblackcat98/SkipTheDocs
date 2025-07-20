@@ -6,14 +6,14 @@ import ConfigCard from './components/ConfigCard';
 import Modal from './components/Modal';
 import type { ConfigFile, PopularTool } from './types.ts';
 import { POPULAR_TOOLS } from './constants.tsx';
-import { DB_CONFIGS } from './data/db.ts';
+import matter from 'gray-matter';
 
 const App: React.FC = () => {
   const [configs, setConfigs] = useState<ConfigFile[]>([]);
   const [isAppLoading, setIsAppLoading] = useState(true);
   const [filterTerm, setFilterTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeModalConfig, setActiveModalConfig] = useState<(ConfigFile & { content: string }) | null>(null);
+  const [activeModalConfig, setActiveModalConfig] = useState<ConfigFile | null>(null);
   
   const [aiResponse, setAiResponse] = useState<string | null>(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
@@ -21,27 +21,34 @@ const App: React.FC = () => {
   useEffect(() => {
     const loadAllConfigs = async () => {
         try {
-            const configsWithContent = await Promise.all(DB_CONFIGS.map(async (config) => {
-                const response = await fetch(config.filePath);
-                if (!response.ok) {
-                    console.error(`Failed to fetch config file: ${config.filePath}. Status: ${response.status}`);
-                    return { ...config, content: `Error: Could not load file.\n\nPath: ${config.filePath}\nStatus: ${response.status} ${response.statusText}` };
-                }
-                const content = await response.text();
-                if (content.trim() === '') {
-                    console.warn(`Fetched file is empty: ${config.filePath}`);
-                    return { ...config, content: `Warning: The configuration file appears to be empty.` };
-                }
-                return { ...config, content };
-            }));
-            setConfigs(configsWithContent);
+            const configModules = import.meta.glob('/data/configs/*.*', { query: '?raw', import: 'default' });
+            const configsData = await Promise.all(
+                Object.entries(configModules).map(async ([path, getContent]) => {
+                    const fileContent = await (getContent() as Promise<string>);
+                    if (fileContent.trim() === '') {
+                        console.warn(`Fetched file is empty: ${path}`);
+                        return null;
+                    }
+
+                    const { data, content } = matter(fileContent);
+                    const fileName = path.split('/').pop() || '';
+
+                    return {
+                        id: fileName.replace(/[^a-zA-Z0-9]/g, '-'),
+                        toolName: data.toolName || 'Unknown',
+                        author: data.author || 'Unknown',
+                        description: data.description || 'No description provided.',
+                        version: data.version || 'N/A',
+                        repositoryUrl: data.repositoryUrl || '',
+                        fileName: fileName,
+                        filePath: path,
+                        content: content,
+                    } as ConfigFile;
+                })
+            );
+            setConfigs(configsData.filter((c): c is ConfigFile => c !== null));
         } catch (error) {
             console.error("A critical error occurred while loading config files:", error);
-            const errorConfigs = DB_CONFIGS.map(config => ({
-                ...config,
-                content: `Error: A network error occurred while trying to load this file.`
-            }));
-            setConfigs(errorConfigs);
         } finally {
             setIsAppLoading(false);
         }
@@ -56,7 +63,7 @@ const App: React.FC = () => {
   }, []);
 
   const openModal = useCallback((config: ConfigFile) => {
-    setActiveModalConfig(config as (ConfigFile & { content: string }));
+    setActiveModalConfig(config);
     setIsModalOpen(true);
   }, []);
 
@@ -80,11 +87,7 @@ const App: React.FC = () => {
   }, []);
 
   const handleDownload = useCallback((config: ConfigFile) => {
-    if (config.content) {
-      downloadFile(config.content, config.fileName);
-    } else {
-        alert("Cannot download file: content is missing.");
-    }
+    downloadFile(config.content, config.fileName);
   }, [downloadFile]);
 
   const handleModalDownload = useCallback(() => {
@@ -112,8 +115,8 @@ const App: React.FC = () => {
   const filteredConfigs = useMemo(() => {
     if (!filterTerm.trim()) return configs;
     const lowercasedFilter = filterTerm.toLowerCase();
-    return configs.filter(config => 
-      config.tool.toLowerCase().includes(lowercasedFilter) ||
+    return configs.filter(config =>
+      config.toolName.toLowerCase().includes(lowercasedFilter) ||
       config.fileName.toLowerCase().includes(lowercasedFilter) ||
       config.description.toLowerCase().includes(lowercasedFilter)
     );

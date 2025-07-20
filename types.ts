@@ -1,10 +1,13 @@
 export interface ConfigFile {
   id: string;
-  tool: string;
+  toolName: string;
+  author: string;
   description: string;
+  version: string;
+  repositoryUrl: string;
   fileName: string;
   filePath: string;
-  content?: string;
+  content: string;
 }
 
 export interface PopularTool {

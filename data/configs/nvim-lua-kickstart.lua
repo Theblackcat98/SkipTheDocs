@@ -1,3 +1,10 @@
+---
+toolName: "Neovim"
+author: "theblackcat98"
+description: "A solid starting point for a modern Neovim configuration in Lua. Includes package management with lazy.nvim, LSP, autocompletion, and Telescope."
+version: "0.1.0"
+repositoryUrl: "https://github.com/folke/kickstart.nvim"
+---
 -- init.lua - A solid starting point for a modern Neovim configuration
 -- This configuration includes package management with lazy.nvim, LSP, autocompletion, and Telescope
 
