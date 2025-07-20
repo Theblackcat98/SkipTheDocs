@@ -14,9 +14,7 @@ const App: React.FC = () => {
   const [filterTerm, setFilterTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalConfig, setActiveModalConfig] = useState<ConfigFile | null>(null);
-  
-  const [aiResponse, setAiResponse] = useState<string | null>(null);
-  const [isAiLoading, setIsAiLoading] = useState(false);
+
 
   useEffect(() => {
     const loadAllConfigs = async () => {
@@ -70,8 +68,6 @@ const App: React.FC = () => {
   const closeModal = useCallback(() => {
     setIsModalOpen(false);
     setActiveModalConfig(null);
-    setAiResponse(null);
-    setIsAiLoading(false);
   }, []);
   
   const downloadFile = useCallback((content: string, filename: string) => {
@@ -95,21 +91,6 @@ const App: React.FC = () => {
       downloadFile(activeModalConfig.content, activeModalConfig.fileName);
     }
   }, [activeModalConfig, downloadFile]);
-
-  const handleAskAI = useCallback(async (question: string) => {
-    if (!activeModalConfig?.content || !question.trim()) return;
-
-    setIsAiLoading(true);
-    setAiResponse(null);
-    try {
-      throw new Error("AI assistant is not available.");
-    } catch (error) {
-      console.error(error);
-      setAiResponse('Sorry, an unexpected error occurred while contacting the AI. Please try again.');
-    } finally {
-      setIsAiLoading(false);
-    }
-  }, [activeModalConfig]);
 
 
   const filteredConfigs = useMemo(() => {
@@ -216,9 +197,6 @@ const App: React.FC = () => {
         onClose={closeModal}
         config={activeModalConfig}
         onDownload={handleModalDownload}
-        onAskAI={handleAskAI}
-        aiResponse={aiResponse}
-        isAiLoading={isAiLoading}
       />
     </div>
   );
