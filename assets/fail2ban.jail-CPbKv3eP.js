@@ -1,0 +1,27 @@
+const n=`# /etc/fail2ban/jail.local
+#
+
+[DEFAULT]
+# "bantime" is the number of seconds that a host is banned.
+bantime  = 10m
+
+# A host is banned if it has generated "maxretry" during the last "findtime"
+# seconds.
+findtime  = 10m
+maxretry = 5
+
+# "backend" specifies the backend used to get files modification.
+# Available options are "pyinotify", "gamin", "polling" and "auto".
+# pyinotify is recommended. gamin requires Gamin (a file alteration monitor).
+backend = auto
+
+#
+# ACTIONS
+#
+
+# Default banning action (e.g. iptables, firwalld, etc)
+banaction = iptables-multiport
+
+[sshd]
+enabled = true
+`;export{n as default};

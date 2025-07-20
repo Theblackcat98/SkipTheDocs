@@ -1,0 +1,16 @@
+const n=`configuration {
+    modi: "window,run,drun";
+    font: "Monospace 12";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "Apps";
+    display-run: "Run";
+    display-window: "Windows";
+    sidebar-mode: true;
+}
+@theme "gruvbox-dark"
+`;export{n as default};

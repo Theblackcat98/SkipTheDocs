@@ -1,0 +1,25 @@
+const n=`# Zipkin configuration file
+
+#
+# Storage configuration
+#
+zipkin:
+  storage:
+    type: mem
+    # For mysql:
+    # type: mysql
+    # mysql:
+    #   host: localhost
+    #   port: 3306
+    #   username: root
+    #   password:
+    #   db: zipkin
+
+#
+# Collector configuration
+#
+zipkin:
+  collector:
+    # The port to listen on for Zipkin spans
+    port: 9411
+`;export{n as default};

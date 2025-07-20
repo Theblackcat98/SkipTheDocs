@@ -1,0 +1,17 @@
+const n=`language: node_js
+node_js:
+  - "14"
+
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+
+script:
+  - npm test
+
+cache:
+  directories:
+    - "node_modules"
+`;export{n as default};
