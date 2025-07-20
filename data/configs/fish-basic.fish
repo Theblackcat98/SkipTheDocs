@@ -1,3 +1,10 @@
+---
+toolName: "fish-basic.fish"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # config.fish - A simple starting config for Fish shell
 # Includes theme settings, aliases, and enables some useful features
 

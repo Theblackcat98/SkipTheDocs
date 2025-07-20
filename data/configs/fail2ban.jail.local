@@ -1,3 +1,10 @@
+---
+toolName: "fail2ban.jail.local"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # /etc/fail2ban/jail.local
 #
 

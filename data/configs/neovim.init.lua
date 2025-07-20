@@ -1,3 +1,10 @@
+---
+toolName: "neovim.init.lua"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 -- init.lua
 
 -- Set leader key

@@ -1,3 +1,10 @@
+---
+toolName: "micro.json"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 {
     "autoclose": true,
     "autoindent": true,

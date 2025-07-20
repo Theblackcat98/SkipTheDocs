@@ -1,3 +1,10 @@
+---
+toolName: "jenkins.xml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 <?xml version='1.1' encoding='UTF-8'?>
 <hudson>
   <disabledAdministrativeMonitors/>

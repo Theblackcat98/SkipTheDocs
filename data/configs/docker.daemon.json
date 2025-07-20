@@ -1,3 +1,10 @@
+---
+toolName: "docker.daemon.json"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 {
   "builder": {
     "gc": {

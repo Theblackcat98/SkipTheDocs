@@ -1,3 +1,10 @@
+---
+toolName: "gitconfig"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 [user]
     name = Your Name
     email = your.email@example.com

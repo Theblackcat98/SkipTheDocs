@@ -1,3 +1,10 @@
+---
+toolName: "alacritty.yml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # Configuration for Alacritty, the GPU-accelerated terminal emulator.
 # Any items in the sample config file can be uncommented and modified.
 

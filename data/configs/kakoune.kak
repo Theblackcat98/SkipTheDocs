@@ -1,3 +1,10 @@
+---
+toolName: "kakoune.kak"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # kakrc
 
 # Theme

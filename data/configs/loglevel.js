@@ -1,3 +1,10 @@
+---
+toolName: "loglevel.js"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 // loglevel.js configuration
 
 // You can configure loglevel by calling its methods.

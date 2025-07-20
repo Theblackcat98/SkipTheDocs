@@ -1,3 +1,10 @@
+---
+toolName: "jaeger.yml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # Jaeger configuration file
 
 #

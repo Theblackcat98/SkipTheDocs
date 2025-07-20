@@ -1,3 +1,10 @@
+---
+toolName: "github-actions.main.workflow"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 workflow "New workflow" {
   on = "push"
   resolves = ["Run tests"]

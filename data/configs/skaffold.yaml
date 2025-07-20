@@ -1,3 +1,10 @@
+---
+toolName: "skaffold.yaml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 apiVersion: skaffold/v2beta29
 kind: Config
 metadata:

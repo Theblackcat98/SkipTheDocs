@@ -1,3 +1,10 @@
+---
+toolName: "consul.json"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 {
   "bootstrap_expect": 1,
   "client_addr": "0.0.0.0",

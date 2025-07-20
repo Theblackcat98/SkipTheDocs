@@ -1,3 +1,10 @@
+---
+toolName: "xmonad.hs"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 --
 -- xmonad config file.
 --

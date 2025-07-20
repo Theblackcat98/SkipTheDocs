@@ -1,3 +1,10 @@
+---
+toolName: "mysql.my.cnf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 #
 # The MySQL database server configuration file.
 #

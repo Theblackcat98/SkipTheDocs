@@ -1,3 +1,10 @@
+---
+toolName: "awesome.rc.lua"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")

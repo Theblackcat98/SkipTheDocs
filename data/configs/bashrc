@@ -1,3 +1,10 @@
+---
+toolName: "bashrc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # .bashrc
 
 # Source global definitions

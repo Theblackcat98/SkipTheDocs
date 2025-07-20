@@ -1,3 +1,10 @@
+---
+toolName: "ssh_config"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # This is the ssh client configuration file.
 # It allows you to set options for ssh connections.
 

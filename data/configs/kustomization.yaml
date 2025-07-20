@@ -1,3 +1,10 @@
+---
+toolName: "kustomization.yaml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 #
 # Kustomize configuration file
 #

@@ -1,3 +1,10 @@
+---
+toolName: "etcd.conf.yml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # This is a configuration file for etcd.
 #
 # This is the default node name for this member.

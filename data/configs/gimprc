@@ -1,3 +1,10 @@
+---
+toolName: "gimprc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # gimprc
 #
 # This is your personal GIMP initialization file.  It is run after

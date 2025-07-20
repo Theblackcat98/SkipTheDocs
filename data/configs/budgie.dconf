@@ -1,3 +1,10 @@
+---
+toolName: "budgie.dconf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 [com/solus-project/budgie-panel]
 applets=['user-indicator', 'systray', 'budgie-menu', 'icon-tasklist', 'clock']
 panel-size='32'

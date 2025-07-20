@@ -1,3 +1,10 @@
+---
+toolName: "screenrc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # screenrc
 #
 # settings for gnu screen

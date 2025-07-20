@@ -1,3 +1,10 @@
+---
+toolName: "postfix.main.cf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 
 

@@ -1,3 +1,10 @@
+---
+toolName: "nanorc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 ## Sample nanorc file
 ## Uncomment and edit the options you want to enable.
 ## The options are listed in alphabetical order.

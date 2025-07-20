@@ -1,3 +1,10 @@
+---
+toolName: "vlcrc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # vlcrc
 #
 # This file is the main configuration file for VLC.

@@ -1,3 +1,10 @@
+---
+toolName: "kibana.yml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 #
 # ** THIS IS AN EXAMPLE CONFIGURATION FILE **
 #

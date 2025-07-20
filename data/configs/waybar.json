@@ -1,3 +1,10 @@
+---
+toolName: "waybar.json"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 {
     "layer": "top",
     "position": "top",

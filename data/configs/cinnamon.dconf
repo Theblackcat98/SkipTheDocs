@@ -1,3 +1,10 @@
+---
+toolName: "cinnamon.dconf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 [org/cinnamon/desktop/interface]
 clock-use-24h=false
 icon-theme='Mint-X'

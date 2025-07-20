@@ -1,3 +1,10 @@
+---
+toolName: "nfs.exports"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 # /etc/exports: the access control list for filesystems which may be exported
 #		to NFS clients.  See exports(5).
 #

@@ -1,3 +1,10 @@
+---
+toolName: "chef.client.rb"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 #
 # Chef Client Config File
 #

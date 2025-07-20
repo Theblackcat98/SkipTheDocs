@@ -1,3 +1,10 @@
+---
+toolName: "inkscape.preferences.xml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <inkscape
    version="1.1.2 (0a00cf5339, 2022-02-04)"

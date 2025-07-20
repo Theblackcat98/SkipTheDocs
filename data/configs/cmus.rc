@@ -1,3 +1,10 @@
+---
+toolName: "cmus.rc"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 #
 # cmus configuration file
 #

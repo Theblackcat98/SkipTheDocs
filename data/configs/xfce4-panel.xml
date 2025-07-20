@@ -1,3 +1,10 @@
+---
+toolName: "xfce4-panel.xml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-panel" version="1.0">

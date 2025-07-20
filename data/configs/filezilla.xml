@@ -1,3 +1,10 @@
+---
+toolName: "filezilla.xml"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <FileZilla3 version="3.57.0" platform="*nix">
 	<Settings>
