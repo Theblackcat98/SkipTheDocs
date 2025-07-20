@@ -92,7 +92,6 @@ const App: React.FC = () => {
     }
   }, [activeModalConfig, downloadFile]);
 
-
   const filteredConfigs = useMemo(() => {
     if (!filterTerm.trim()) return configs;
     const lowercasedFilter = filterTerm.toLowerCase();
@@ -152,7 +151,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 selection:bg-indigo-500 selection:text-white">
-      <Header />
+      <Header onSubmitClick={() => setIsSubmissionFormOpen(true)} />
       <main className="container mx-auto px-4 py-8 sm:py-12">
         <div className="flex flex-col items-center gap-12">
           <SearchBar 
