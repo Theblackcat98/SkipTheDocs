@@ -2,9 +2,7 @@
 
 A static website designed for discovering and sharing configuration templates for command-line tools.
 
-## Technology Stack
-
-*   **Frontend:** React, TypeScript
+https://theblackcat98.github.io/SkipTheDocs/
 
 ## Core Functionality
 
@@ -14,47 +12,6 @@ SkipTheDocs provides the following features:
 *   **Search & Filter:** Allows users to efficiently search and filter configurations by tool name, filename, or description.
 *   **Content Viewer:** Provides a modal interface to view the raw content of any configuration file.
 *   **Download Option:** Enables users to download configuration files directly.
-*   **"Ask AI" Feature (Non-functional):** This feature is present in the UI but is currently under development and not yet functional.
-
-## Getting Started
-
-Follow these instructions to get the SkipTheDocs project up and running on your local machine.
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-*   Node.js (LTS recommended)
-*   npm (comes with Node.js) or Yarn
-
-### Installation
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/your-username/SkipTheDocs.git
-    cd SkipTheDocs
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-    # or
-    yarn install
-    ```
-
-### Running the Application
-
-To start the development server:
-
-```bash
-npm start
-# or
-yarn start
-```
-
-The application will typically open in your browser at `http://localhost:3000`.
 
 ## Project Structure
 
@@ -81,4 +38,4 @@ repositoryUrl: "https://github.com/user/repo"
 ---
 ```
 
-The application will parse this metadata to display the configuration in the UI.
+SkipTheDocs will parse this metadata to display the configuration in the UI.
