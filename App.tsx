@@ -121,11 +121,14 @@ const App: React.FC = () => {
 
       const fileContent = matter.stringify(data.content, frontMatter);
       
-      const formattedOutput = `### New Configuration Submission\\n\\n**Title:** ${data.title}\\n**Tool:** ${data.tool}\\n**Author:** ${data.author}\\n**Version:** ${data.version}\\n**Category:** ${data.category}\\n**Tags:** ${data.tags.join(', ')}\\n**Compatibility:** OS: ${data.compatibility.os.join(', ')}, Versions: ${data.compatibility.version_min} - ${data.compatibility.version_max}\\n\\n**Description:**\\n${data.description}\\n\\n\`\`\`\\n${data.content}\\n\`\`\`\\n\\n`;
+      const formattedOutput = `### New Configuration Submission\n\n**Title:** ${data.title}\n**Tool:** ${data.tool}\n**Author:** ${data.author}\n**Version:** ${data.version}\n**Category:** ${data.category}\n**Tags:** ${data.tags.join(', ')}\n**Compatibility:** OS: ${data.compatibility.os.join(', ')}, Versions: ${data.compatibility.version_min} - ${data.compatibility.version_max}\n\n**Description:**\n${data.description}\n\n\`\`\`\n${data.content}\n\`\`\`\n\n`;
 
-      setSubmittedConfigData(formattedOutput);
-      alert('Configuration data formatted. Please copy the content and create a new issue/pull request.');
-      // Keep the modal open to display the formatted data
+      const encodedTitle = encodeURIComponent(data.title);
+      const encodedBody = encodeURIComponent(formattedOutput);
+      const issueUrl = `https://github.com/theblackcat98/SkipTheDocs/issues/new?title=${encodedTitle}&body=${encodedBody}`;
+      
+      window.open(issueUrl, '_blank');
+      setIsSubmissionFormOpen(false);
     } catch (error) {
       console.error('Error formatting config data:', error);
       alert('Error formatting configuration data. Please try again.');
