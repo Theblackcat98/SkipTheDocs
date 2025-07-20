@@ -5,16 +5,16 @@ import tempfile
 import git
 import time
 import fnmatch
-from typing import Union, Set, List, Dict, Tuple, Any
+from typing import Union, Set, List, Dict, Tuple, Any, Optional
 from urllib.parse import urlparse
 
 def crawl_github_files(
-    repo_url, 
-    token=None, 
+    repo_url,
+    token=None,
     max_file_size: int = 1 * 1024 * 1024,  # 1 MB
     use_relative_paths: bool = False,
-    include_patterns: Union[str, Set[str]] = None,
-    exclude_patterns: Union[str, Set[str]] = None
+    include_patterns: Optional[Union[str, Set[str]]] = None,
+    exclude_patterns: Optional[Union[str, Set[str]]] = None
 ):
     """
     Crawl files from a specific path in a GitHub repository at a specific commit.
@@ -350,22 +350,25 @@ if __name__ == "__main__":
         include_patterns={"*.py", "*.md"},  # Include Python and Markdown files
     )
     
-    files = result["files"]
-    stats = result["stats"]
-    
-    print(f"\nDownloaded {stats['downloaded_count']} files.")
-    print(f"Skipped {stats['skipped_count']} files due to size limits or patterns.")
-    print(f"Base path for relative paths: {stats['base_path']}")
-    print(f"Include patterns: {stats['include_patterns']}")
-    print(f"Exclude patterns: {stats['exclude_patterns']}")
-    
-    # Display all file paths in the dictionary
-    print("\nFiles in dictionary:")
-    for file_path in sorted(files.keys()):
-        print(f"  {file_path}")
-    
-    # Example: accessing content of a specific file
-    if files:
-        sample_file = next(iter(files))
-        print(f"\nSample file: {sample_file}")
-        print(f"Content preview: {files[sample_file][:200]}...")
+    if result:
+        files = result["files"]
+        stats = result["stats"]
+        
+        print(f"\nDownloaded {stats['downloaded_count']} files.")
+        print(f"Skipped {stats['skipped_count']} files due to size limits or patterns.")
+        print(f"Base path for relative paths: {stats['base_path']}")
+        print(f"Include patterns: {stats['include_patterns']}")
+        print(f"Exclude patterns: {stats['exclude_patterns']}")
+        
+        # Display all file paths in the dictionary
+        print("\nFiles in dictionary:")
+        for file_path in sorted(files.keys()):
+            print(f"  {file_path}")
+        
+        # Example: accessing content of a specific file
+        if files:
+            sample_file = next(iter(files))
+            print(f"\nSample file: {sample_file}")
+            print(f"Content preview: {files[sample_file][:200]}...")
+    else:
+        print("Failed to retrieve files from the repository.")
