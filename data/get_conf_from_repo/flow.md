@@ -20,3 +20,10 @@ assets/*, data/*, examples/*, images/*, public/*, static/*, temp/*, venv/*, .ven
 
 ## Iteratively read and analyze files for documentation
 
+e.g. add file to context --> llm extract relevant info --> stores in mem.md
+--> add new file to context --> extract (if any) --> store
+
+## mem.md should have relevant 'config' content.
+
+--> add all parsed, cleaned, sanitized info to context --> LLM generates a config
+to our spec --> save to folder
