@@ -9,6 +9,9 @@ Thank you for your interest in contributing to SkipTheDocs! We welcome all contr
     - [Reporting Issues](#reporting-issues)
     - [Suggesting Enhancements](#suggesting-enhancements)
     - [Submitting Pull Requests](#submitting-pull-requests)
+  - [Submitting a Config](#submitting-a-config)
+  - [Updating a Config](#updating-a-config)
+  - [Workflow Bots](#workflow-bots)
   - [Template Contribution Guidelines](#template-contribution-guidelines)
     - [Template Structure](#template-structure)
     - [Metadata Format](#metadata-format)
@@ -40,6 +43,34 @@ We welcome suggestions for new features or improvements. Please open an issue an
 3. Ensure your code follows our style guidelines
 4. Test your changes
 5. Submit a pull request with a clear description of your changes
+
+## Submitting a Config
+
+To submit a Config, please follow these steps:
+
+- Open an issue in [this template](.github/ISSUE_TEMPLATE/config-submission.md) with the title `[create-Config]: <Config-name>`
+- Fill out the template with the necessary information
+- Submit the issue
+- Let us take care of the rest!
+
+## Updating a Config
+
+To update a Config, please follow these steps:
+
+- Create a new pull request with the updated Config
+- Make sure to include the Config name in the title
+- Submit the pull request
+- Let us take care of the rest!
+
+> This applied to any other actions you want to take with the Configs in this repository.
+
+## Workflow Bots
+
+We make use of GitHub Actions to automate the workflow of the Configs in this repository. Here's how it works:
+
+When creating a new Config, the bot will automatically create the files and folders needed for the Config to be added to the database. The bot will also close the issue and automatically create a pull request for the Config.
+
+When updating a Config, the bot will automatically update the Config files and folders with the new changes. This will directly push the changes to the main branch.
 
 ## Template Contribution Guidelines
 

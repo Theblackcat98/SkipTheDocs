@@ -54,3 +54,7 @@ repositoryUrl: "https://github.com/user/repo"
 ```
 
 SkipTheDocs will parse this metadata to display the configuration in the UI.
+
+## Contributing
+
+We welcome contributions to SkipTheDocs! If you're interested in helping, please review our [contributing guidelines](CONTRIBUTING.md) to get started.
