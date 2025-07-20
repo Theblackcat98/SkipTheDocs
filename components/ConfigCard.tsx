@@ -20,20 +20,25 @@ const ConfigCard: React.FC<ConfigCardProps> = ({ config, onView, onDownload }) =
           {shortDescription}
         </p>
       </div>
-      <div className="p-4 bg-gray-800/80 border-t border-gray-700/50 flex items-center justify-end gap-2 flex-shrink-0">
-        <button
-          onClick={() => onView(config)}
-          className="px-4 py-2 text-sm font-medium text-gray-200 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors"
-        >
-          View Full Config
-        </button>
-        <button
-          onClick={() => onDownload(config)}
-          className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
-        >
-          <IconDownload className="w-4 h-4" />
-          Download
-        </button>
+      <div className="p-4 bg-gray-800/80 border-t border-gray-700/50 flex items-center justify-between gap-2 flex-shrink-0">
+        <a href={config.repositoryUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
+          GitHub
+        </a>
+        <div className="flex items-center gap-2">
+          <button
+        onClick={() => onView(config)}
+        className="px-4 py-2 text-sm font-medium text-gray-200 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors"
+          >
+        View Full Config
+          </button>
+          <button
+        onClick={() => onDownload(config)}
+        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
+          >
+        <IconDownload className="w-4 h-4" />
+        Download
+          </button>
+        </div>
       </div>
     </div>
   );
