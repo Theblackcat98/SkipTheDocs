@@ -6,7 +6,7 @@ import ConfigCard from './components/ConfigCard';
 import Modal from './components/Modal';
 import type { ConfigFile, PopularTool } from './types.ts';
 import { POPULAR_TOOLS } from './constants.tsx';
-import { DB_CONFIGS } from './public/db.ts';
+import { DB_CONFIGS } from './data/db.ts';
 
 const App: React.FC = () => {
   const [configs, setConfigs] = useState<ConfigFile[]>([]);
@@ -100,7 +100,6 @@ const App: React.FC = () => {
     setAiResponse(null);
     try {
       throw new Error("AI assistant is not available.");
-      setAiResponse(response);
     } catch (error) {
       console.error(error);
       setAiResponse('Sorry, an unexpected error occurred while contacting the AI. Please try again.');
