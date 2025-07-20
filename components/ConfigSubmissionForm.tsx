@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 interface ConfigSubmissionFormProps {
   onSubmit: (data: ConfigData) => void;
+  isLoading: boolean;
 }
 
 interface ConfigData {
@@ -20,7 +21,7 @@ interface ConfigData {
   content: string;
 }
 
-export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSubmit }) => {
+export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSubmit, isLoading }) => {
   const [formData, setFormData] = useState<ConfigData>({
     title: '',
     description: '',
@@ -209,8 +210,9 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
         <button
           type="submit"
           className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          disabled={isLoading}
         >
-          Submit Configuration
+          {isLoading ? 'Submitting...' : 'Submit Configuration'}
         </button>
       </div>
     </form>

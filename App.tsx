@@ -15,6 +15,8 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalConfig, setActiveModalConfig] = useState<ConfigFile | null>(null);
   const [isSubmissionFormOpen, setIsSubmissionFormOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submittedConfigData, setSubmittedConfigData] = useState<string | null>(null);
 
   useEffect(() => {
     const loadAllConfigs = async () => {
@@ -105,33 +107,30 @@ const App: React.FC = () => {
   const clearFilter = () => setFilterTerm('');
 
   const handleConfigSubmission = async (data: ConfigData) => {
+    setIsSubmitting(true);
     try {
-      // Create the file content with YAML front matter
       const frontMatter = {
-        title: data.title,
+        toolName: data.tool,
         description: data.description,
         author: data.author,
         version: data.version,
         tags: data.tags,
-        tool: data.tool,
         category: data.category,
         compatibility: data.compatibility
       };
 
       const fileContent = matter.stringify(data.content, frontMatter);
       
-      // Generate a file name based on the tool name
-      const fileName = `${data.tool.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.conf`;
+      const formattedOutput = `### New Configuration Submission\\n\\n**Title:** ${data.title}\\n**Tool:** ${data.tool}\\n**Author:** ${data.author}\\n**Version:** ${data.version}\\n**Category:** ${data.category}\\n**Tags:** ${data.tags.join(', ')}\\n**Compatibility:** OS: ${data.compatibility.os.join(', ')}, Versions: ${data.compatibility.version_min} - ${data.compatibility.version_max}\\n\\n**Description:**\\n${data.description}\\n\\n\`\`\`\\n${data.content}\\n\`\`\`\\n\\n`;
 
-      // In a real application, you would send this to your backend
-      console.log('Submitting config:', fileName, fileContent);
-
-      // For now, just show a success message
-      alert('Configuration submitted successfully!');
-      setIsSubmissionFormOpen(false);
+      setSubmittedConfigData(formattedOutput);
+      alert('Configuration data formatted. Please copy the content and create a new issue/pull request.');
+      // Keep the modal open to display the formatted data
     } catch (error) {
-      console.error('Error submitting config:', error);
-      alert('Error submitting configuration. Please try again.');
+      console.error('Error formatting config data:', error);
+      alert('Error formatting configuration data. Please try again.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -230,10 +229,25 @@ const App: React.FC = () => {
       />
       <Modal
         isOpen={isSubmissionFormOpen}
-        onClose={() => setIsSubmissionFormOpen(false)}
-        title="Submit New Configuration"
+        onClose={() => {
+          setIsSubmissionFormOpen(false);
+          setSubmittedConfigData(null); // Clear formatted data on close
+        }}
+        title={submittedConfigData ? "Copy Configuration Data" : "Submit New Configuration"}
       >
-        <ConfigSubmissionForm onSubmit={handleConfigSubmission} />
+        {submittedConfigData ? (
+          <div className="bg-gray-800 p-4 rounded-md overflow-auto max-h-[70vh]">
+            <pre className="text-gray-200 whitespace-pre-wrap text-sm">{submittedConfigData}</pre>
+            <button
+              onClick={() => navigator.clipboard.writeText(submittedConfigData)}
+              className="mt-4 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Copy to Clipboard
+            </button>
+          </div>
+        ) : (
+          <ConfigSubmissionForm onSubmit={handleConfigSubmission} isLoading={isSubmitting} />
+        )}
       </Modal>
     </div>
   );
