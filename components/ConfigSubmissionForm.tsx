@@ -77,60 +77,60 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Submit New Configuration</h2>
+    <form onSubmit={handleSubmit} className="max-w-2xl mx-auto p-6 bg-gray-900 border border-gray-700 rounded-xl shadow-2xl">
+      <h2 className="text-2xl font-bold mb-6 text-gray-100">Submit New Configuration</h2>
       
       <div className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Title</label>
+          <label className="block text-sm font-medium text-gray-200">Title</label>
           <input
             type="text"
             value={formData.title}
             onChange={(e) => setFormData({...formData, title: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Description</label>
+          <label className="block text-sm font-medium text-gray-200">Description</label>
           <textarea
             value={formData.description}
             onChange={(e) => setFormData({...formData, description: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             rows={3}
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Author</label>
+          <label className="block text-sm font-medium text-gray-200">Author</label>
           <input
             type="text"
             value={formData.author}
             onChange={(e) => setFormData({...formData, author: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Tool</label>
+          <label className="block text-sm font-medium text-gray-200">Tool</label>
           <input
             type="text"
             value={formData.tool}
             onChange={(e) => setFormData({...formData, tool: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             required
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Category</label>
+          <label className="block text-sm font-medium text-gray-200">Category</label>
           <select
             value={formData.category}
             onChange={(e) => setFormData({...formData, category: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             required
           >
             <option value="">Select a category</option>
@@ -141,17 +141,17 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Tags (comma-separated)</label>
+          <label className="block text-sm font-medium text-gray-200">Tags (comma-separated)</label>
           <input
             type="text"
             value={formData.tags.join(', ')}
             onChange={handleTagsChange}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
           />
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Version Range</label>
+          <label className="block text-sm font-medium text-gray-200">Version Range</label>
           <div className="grid grid-cols-2 gap-4">
             <input
               type="text"
@@ -161,7 +161,7 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
                 ...formData,
                 compatibility: {...formData.compatibility, version_min: e.target.value}
               })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             />
             <input
               type="text"
@@ -171,21 +171,21 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
                 ...formData,
                 compatibility: {...formData.compatibility, version_max: e.target.value}
               })}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+              className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 bg-gray-800 text-gray-200"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Operating Systems</label>
+          <label className="block text-sm font-medium text-gray-200">Operating Systems</label>
           <div className="mt-2 space-x-4">
             {operatingSystems.map(os => (
-              <label key={os} className="inline-flex items-center">
+              <label key={os} className="inline-flex items-center text-gray-200">
                 <input
                   type="checkbox"
                   checked={formData.compatibility.os.includes(os)}
                   onChange={() => handleOsChange(os)}
-                  className="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                  className="rounded border-gray-700 text-indigo-600 focus:ring-indigo-500 bg-gray-800"
                 />
                 <span className="ml-2">{os}</span>
               </label>
@@ -194,11 +194,11 @@ export const ConfigSubmissionForm: React.FC<ConfigSubmissionFormProps> = ({ onSu
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700">Configuration Content</label>
+          <label className="block text-sm font-medium text-gray-200">Configuration Content</label>
           <textarea
             value={formData.content}
             onChange={(e) => setFormData({...formData, content: e.target.value})}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 font-mono"
+            className="mt-1 block w-full rounded-md border-gray-700 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 font-mono bg-gray-800 text-gray-200"
             rows={15}
             required
           />
