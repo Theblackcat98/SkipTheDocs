@@ -1,3 +1,9 @@
+<div align="center">
+
+![banner](./public/banner3.png)
+
+</div>
+
 # SkipTheDocs
 
 A static website designed for discovering and sharing configuration templates for command-line tools.
@@ -12,6 +18,15 @@ SkipTheDocs provides the following features:
 *   **Search & Filter:** Allows users to efficiently search and filter configurations by tool name, filename, or description.
 *   **Content Viewer:** Provides a modal interface to view the raw content of any configuration file.
 *   **Download Option:** Enables users to download configuration files directly.
+
+Future planned feature: CLI TOOL
+
+<div align="center">
+
+![sitescreen](./public/site-screenshot.png)
+<!-- ![banner2](./public/banner1.png) -->
+
+</div>
 
 ## Project Structure
 
