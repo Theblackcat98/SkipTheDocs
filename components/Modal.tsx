@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import type { ConfigFile } from '../types.ts';
-import { IconCopy, IconDownload, IconCheck } from '../constants.tsx';
+import { X, Copy, Download, Check } from 'lucide-react';
 
 interface ModalProps {
   isOpen: boolean;
@@ -77,9 +77,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload, titl
                 </div>
               </div>
               <button onClick={onClose} className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors" aria-label="Close modal">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <X className="h-6 w-6" />
               </button>
             </header>
             <main className="flex-grow p-4 md:p-6 overflow-y-auto bg-gray-900/40">
@@ -92,14 +90,14 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload, titl
                 onClick={handleCopy}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-md transition-colors ${copied ? 'bg-green-600 text-white' : 'bg-gray-700 text-gray-200 hover:bg-gray-600'}`}
               >
-                {copied ? <IconCheck className="w-5 h-5" /> : <IconCopy className="w-5 h-5" />}
+                {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
                 {copied ? 'Copied!' : 'Copy Code'}
               </button>
               <button
                 onClick={onDownload}
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
               >
-                <IconDownload className="w-5 h-5" />
+                <Download className="w-5 h-5" />
                 Download
               </button>
             </footer>
