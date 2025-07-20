@@ -64,6 +64,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, config, onDownload, titl
               <div>
                 <h2 className="text-xl font-bold text-gray-100">{config.toolName}</h2>
                 <p className="text-sm text-indigo-400 font-mono">{config.fileName}</p>
+                <div className="text-xs text-gray-400 mt-1">
+                  <span>Author: {config.author}</span> | <span>Version: {config.version}</span>
+                  {config.repositoryUrl && (
+                    <>
+                      {' | '}
+                      <a href={config.repositoryUrl} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:underline">
+                        GitHub
+                      </a>
+                    </>
+                  )}
+                </div>
               </div>
               <button onClick={onClose} className="p-2 rounded-full text-gray-400 hover:text-white hover:bg-gray-700 transition-colors" aria-label="Close modal">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

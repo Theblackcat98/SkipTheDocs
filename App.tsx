@@ -7,6 +7,7 @@ import { ConfigSubmissionForm } from './components/ConfigSubmissionForm';
 import type { ConfigFile, PopularTool, ConfigData } from './types.ts';
 import { POPULAR_TOOLS } from './constants.tsx';
 import matter from 'gray-matter';
+import SkipTheDocs from './components/SkipTheDocs.tsx';
 
 const App: React.FC = () => {
   const [configs, setConfigs] = useState<ConfigFile[]>([]);
@@ -156,6 +157,7 @@ const App: React.FC = () => {
       <Header onSubmitClick={() => setIsSubmissionFormOpen(true)} />
       <main className="container mx-auto px-4 py-8 sm:py-12">
         <div className="flex flex-col items-center gap-12">
+          <SkipTheDocs onSubmitClick={() => setIsSubmissionFormOpen(true)} />
           <SearchBar 
             filterTerm={filterTerm}
             setFilterTerm={setFilterTerm}
