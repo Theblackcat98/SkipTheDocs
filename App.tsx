@@ -1,10 +1,10 @@
-
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ConfigCard from './components/ConfigCard';
 import Modal from './components/Modal';
-import type { ConfigFile, PopularTool } from './types.ts';
+import { ConfigSubmissionForm } from './components/ConfigSubmissionForm';
+import type { ConfigFile, PopularTool, ConfigData } from './types.ts';
 import { POPULAR_TOOLS } from './constants.tsx';
 import matter from 'gray-matter';
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
   const [filterTerm, setFilterTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalConfig, setActiveModalConfig] = useState<ConfigFile | null>(null);
-
+  const [isSubmissionFormOpen, setIsSubmissionFormOpen] = useState(false);
 
   useEffect(() => {
     const loadAllConfigs = async () => {
@@ -104,6 +104,37 @@ const App: React.FC = () => {
   }, [configs, filterTerm]);
   
   const clearFilter = () => setFilterTerm('');
+
+  const handleConfigSubmission = async (data: ConfigData) => {
+    try {
+      // Create the file content with YAML front matter
+      const frontMatter = {
+        title: data.title,
+        description: data.description,
+        author: data.author,
+        version: data.version,
+        tags: data.tags,
+        tool: data.tool,
+        category: data.category,
+        compatibility: data.compatibility
+      };
+
+      const fileContent = matter.stringify(data.content, frontMatter);
+      
+      // Generate a file name based on the tool name
+      const fileName = `${data.tool.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.conf`;
+
+      // In a real application, you would send this to your backend
+      console.log('Submitting config:', fileName, fileContent);
+
+      // For now, just show a success message
+      alert('Configuration submitted successfully!');
+      setIsSubmissionFormOpen(false);
+    } catch (error) {
+      console.error('Error submitting config:', error);
+      alert('Error submitting configuration. Please try again.');
+    }
+  };
 
   if (isAppLoading) {
     return (
@@ -198,6 +229,13 @@ const App: React.FC = () => {
         config={activeModalConfig}
         onDownload={handleModalDownload}
       />
+      <Modal
+        isOpen={isSubmissionFormOpen}
+        onClose={() => setIsSubmissionFormOpen(false)}
+        title="Submit New Configuration"
+      >
+        <ConfigSubmissionForm onSubmit={handleConfigSubmission} />
+      </Modal>
     </div>
   );
 };
