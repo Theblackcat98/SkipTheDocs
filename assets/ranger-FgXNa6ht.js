@@ -1,0 +1,29 @@
+const e=`---
+toolName: "ranger.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+# ===================================================================
+# This is the configuration file of ranger, a console file manager with VI key bindings.
+# ===================================================================
+
+# Which view-mode should be used?  Possible values are:
+#     miller: use miller columns
+#     multipane: use multiple panes
+set viewmode miller
+
+# How many columns are there, and what are their relative widths?
+set column_ratios 1,3,4
+
+# Which files should be hidden? (regular expression)
+set hidden_filter ^\\.|\\.(?:pyc|pyo|bak|swp)$|^__pycache__$
+
+# Show hidden files? You can toggle this by typing 'zh'
+set show_hidden false
+
+# Ask for a confirmation when running the "delete" command?
+# Valid values are "always", "never", "multiple" (default)
+set confirm_on_delete multiple
+`;export{e as default};

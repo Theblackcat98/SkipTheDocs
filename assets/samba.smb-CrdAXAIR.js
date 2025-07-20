@@ -1,0 +1,164 @@
+const e=`---
+toolName: "samba.smb.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+#
+# Sample configuration file for the Samba suite for Debian systems.
+#
+# This is the main Samba configuration file. You should read the
+# smb.conf(5) manual page in order to understand the options listed
+# here. Samba has a huge number of configurable options most of which
+# are not shown in this example
+#
+# Some options that are often worth tuning have been included as
+# commented-out examples in this file.
+#  - When such options are commented with ";", the proposed setting
+#    differs from the default Samba behaviour
+#  - When commented with "#", the proposed setting is the default
+#    behaviour of Samba but the option is considered important
+#    enough to be mentioned here.
+#
+# NOTE: Whenever you modify this file you should run the command
+# "testparm" to check both the syntax and the consistency of the
+# configuration.
+
+#======================= Global Settings =======================
+
+[global]
+
+## Browsing/Identification ###
+
+# Change this to the workgroup/NT-domain name your Samba server will part of
+   workgroup = WORKGROUP
+
+# server string is the equivalent of the NT Description field
+   server string = %h server (Samba, Ubuntu)
+
+# Windows Internet Name Serving Support Section:
+# WINS Support - Tells the NMBD component of Samba to enable its WINS Server
+#   wins support = no
+
+# WINS Server - Tells the NMBD components of Samba to be a WINS Client
+# Note: Samba can be either a WINS Server, or a WINS Client, but NOT both
+#   wins server = w.x.y.z
+
+# This will prevent nmbd to search for WINS servers despite the presence of
+# wins server = lines in this file.
+#   dns proxy = no
+
+#### Networking ####
+
+# The specific set of interfaces / networks to bind to
+# This can be either the interface name or an IP address/netmask;
+# interface names are normally preferred
+#   interfaces = 127.0.0.0/8 eth0
+
+# Only bind to the named interfaces and reject connections from other interfaces
+#   bind interfaces only = yes
+
+#### Debugging/Accounting ####
+
+# This tells Samba to use a separate log file for each machine
+# that connects
+   log file = /var/log/samba/log.%m
+
+# Cap the size of the individual log files (in KiB).
+   max log size = 1000
+
+# We want Samba to only log to /var/log/samba/log.{smbd,nmbd}
+# We don't want it to log to syslog also.
+   logging = file
+
+# Do something sensible when Samba crashes: mail the admin a backtrace
+   panic action = /usr/share/samba/panic-action %d
+
+####### Authentication #######
+
+# Server role. Defines in which mode Samba will operate.
+# "user" is the default.
+#   server role = standalone server
+
+# If you are setting up a DC, you must set this to "yes".
+#   map to guest = bad user
+
+########## Domains ###########
+
+#
+# The following settings are appropriate for Samba running as a domain
+# member server.
+#
+#   security = ads
+#   realm = YOUR-REALM.COM
+#   password server = your-ad-dc.your-realm.com
+#   encrypt passwords = yes
+#
+#   idmap config * : backend = tdb
+#   idmap config * : range = 3000-7999
+#   idmap config YOUR-REALM.COM : backend = rid
+#   idmap config YOUR-REALM.COM : range = 10000-999999
+#
+#   winbind use default domain = yes
+#   winbind offline logon = false
+#   winbind enum users = yes
+#   winbind enum groups = yes
+#   winbind refresh tickets = yes
+#
+#   template shell = /bin/bash
+#   template homedir = /home/%D/%U
+
+#
+# The following settings are appropriate for Samba running as a DC.
+#
+#   server role = active directory domain controller
+#   workgroup = SAMDOM
+#   realm = samdom.example.com
+#   netbios name = DC1
+#   passdb backend = samba_dsdb
+#   dns forwarder = 8.8.8.8
+
+#======================= Share Definitions =======================
+
+[homes]
+   comment = Home Directories
+   browseable = no
+
+# By default, the home directories are exported read-only. Change next
+# parameter to 'yes' if you want to be able to write to them.
+   read only = yes
+
+# File creation mask is set to 0700 for security reasons. If you want to
+# create files with group=rw permissions, set next parameter to 0775.
+   create mask = 0700
+
+# Directory creation mask is set to 0700 for security reasons. If you want to
+# create dirs. with group=rw permissions, set next parameter to 0775.
+   directory mask = 0700
+
+# By default, \\server\\username shares can be connected to by anyone
+# with access to the samba server.
+# The following parameter makes sure that only "username" can connect
+# to \\server\\username
+# This might need tweaking when using external authentication schemes
+   valid users = %S
+
+[printers]
+   comment = All Printers
+   browseable = no
+   path = /var/spool/samba
+   printable = yes
+   guest ok = no
+   read only = yes
+   create mask = 0700
+
+# Windows clients look for this share name as a source of downloadable
+# printer drivers
+[print$]
+   comment = Printer Drivers
+   path = /var/lib/samba/printers
+   browseable = yes
+   read only = yes
+   guest ok = no
+`;export{e as default};

@@ -1,0 +1,79 @@
+const e=`---
+toolName: "redis.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+# Redis configuration file example.
+#
+# Note that in order to read the configuration file, Redis must be
+# started with the file path as first argument:
+#
+# ./redis-server /path/to/redis.conf
+
+# Note on units: when memory size is needed, it is possible to specify
+# it in the usual form of 1k 512mb 2gb 4g and so forth:
+#
+# 1k => 1024 bytes
+# 1kb => 1000 bytes
+# 1m => 1000000 bytes
+# 1mb => 1024*1024 bytes
+# 1g => 1000000000 bytes
+# 1gb => 1024*1024*1024 bytes
+#
+# units are case insensitive so 1GB 1Gb 1gB are all the same.
+
+# By default Redis does not run as a daemon. Use 'yes' if you need it.
+# Note that Redis will write a pid file in /var/run/redis.pid when daemonized.
+daemonize no
+
+# When running daemonized, Redis writes a pid file in /var/run/redis_6379.pid by
+# default. You can specify a custom pid file location here.
+pidfile /var/run/redis_6379.pid
+
+# Accept connections on the specified port, default is 6379.
+# If port 0 is specified Redis will not listen on a TCP socket.
+port 6379
+
+# TCP listen() backlog.
+#
+# In high requests-per-second environments you need an high backlog in order
+# to avoid slow clients connection issues. Note that the Linux kernel
+# will silently truncate it to the value of /proc/sys/net/core/somaxconn
+# so make sure to raise both the somaxconn and tcp_max_syn_backlog
+# values in order to get the desired effect.
+tcp-backlog 511
+
+# By default Redis listens for connections from all the network interfaces
+# available on the server. It is possible to listen to just one or multiple
+# interfaces using the "bind" configuration directive, followed by one or
+# more IP addresses.
+#
+# Examples:
+#
+# bind 192.168.1.100 10.0.0.1
+# bind 127.0.0.1 ::1
+#
+# ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the
+# internet, binding to all the interfaces is dangerous and will expose the
+# instance to everybody on the internet. So by default we uncomment the
+# following binding, that will force Redis to listen only into the
+# IPv4 loopback interface address (this means Redis will be able to accept
+# connections only from clients running into the same computer it is running).
+#
+# IF YOU ARE SURE YOU WANT YOUR INSTANCE TO LISTEN TO ALL THE INTERFACES
+# JUST COMMENT THE FOLLOWING LINE.
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bind 127.0.0.1
+
+# Specify the path for the unix socket that will be used to listen for
+# incoming connections. There is no default, so Redis will not listen
+# on a unix socket when not specified.
+#
+# unixsocket /tmp/redis.sock
+# unixsocketperm 700
+
+# Close the connection after a client is idle for N seconds (0 to disable)
+timeout 0
+`;export{e as default};

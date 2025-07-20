@@ -1,0 +1,26 @@
+const n=`---
+toolName: "micro.json"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+{
+    "autoclose": true,
+    "autoindent": true,
+    "colorscheme": "default",
+    "cursorline": true,
+    "eofnewline": true,
+    "indentchar": " ",
+    "rmtrailingws": true,
+    "ruler": true,
+    "savecursor": true,
+    "scrollmargin": 3,
+    "softwrap": true,
+    "splitbottom": true,
+    "splitright": true,
+    "syntax": true,
+    "tabsize": 4,
+    "tabstospaces": true
+}
+`;export{n as default};

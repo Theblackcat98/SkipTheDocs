@@ -1,0 +1,10 @@
+const o=`---
+toolName: "newsboat.urls"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+http://www.rssboard.org/files/rss-2.0-sample.xml "RSS 2.0 Sample"
+https://validator.w3.org/feed/docs/examples/atom.xml "Atom Sample"
+`;export{o as default};

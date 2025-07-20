@@ -1,0 +1,27 @@
+const n=`---
+toolName: "gpg.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+#
+# GnuPG configuration file
+#
+
+#
+# Key server
+#
+keyserver hkps://keys.openpgp.org
+
+#
+# Default key
+#
+default-key 0x1234567890ABCDEF
+
+#
+# Other options
+#
+use-agent
+with-fingerprint
+`;export{n as default};

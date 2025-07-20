@@ -1,0 +1,22 @@
+const n=`---
+toolName: "mc.ini"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+[Midnight-Commander]
+skin=default
+show_hidden_files=1
+navigate_with_arrows=1
+confirm_exit=1
+confirm_delete=1
+confirm_overwrite=1
+auto_menu=1
+drop_menus=1
+use_internal_edit=1
+use_internal_view=1
+editor_word_wrap_line_length=72
+editor_fill_tabs_with_spaces=1
+editor_tab_spacing=4
+`;export{n as default};

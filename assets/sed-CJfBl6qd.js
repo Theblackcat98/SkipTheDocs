@@ -1,0 +1,15 @@
+const e=`---
+toolName: "sed.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+# This is a dummy config file for sed. Sed is usually used directly from the command line.
+# You can write sed scripts in a file and execute them with the -f option.
+# For example:
+# s/foo/bar/g
+#
+# And then run:
+# sed -f sed.conf file.txt
+`;export{e as default};

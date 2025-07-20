@@ -1,0 +1,34 @@
+const n=`---
+toolName: "mpv.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+# mpv configuration file
+
+# Video
+vo=gpu
+hwdec=auto
+
+# Audio
+ao=pulse
+
+# Subtitles
+sub-auto=all
+sub-font-size=55
+
+# OSD/OSC
+osc=no
+osd-bar=no
+
+# Screenshots
+screenshot-format=png
+screenshot-directory=~/Pictures/mpv
+
+# General
+pause=yes
+keep-open=yes
+autofit-larger=90%x90%
+cursor-autohide=1000
+`;export{n as default};

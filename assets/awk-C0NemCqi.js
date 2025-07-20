@@ -1,0 +1,17 @@
+const n=`---
+toolName: "awk.conf"
+author: ""
+description: ""
+version: "0.0"
+repositoryUrl: "https://github.com/"
+---
+# This is a dummy config file for awk. Awk is usually used directly from the command line.
+# You can define functions in a file and use them with the -f option.
+# For example:
+# function my_print(s) {
+#   print "My print: " s
+# }
+#
+# And then run:
+# awk -f awk.conf '{ my_print(-bash) }' file.txt
+`;export{n as default};

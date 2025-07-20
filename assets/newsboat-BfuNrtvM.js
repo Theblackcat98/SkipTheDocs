@@ -1,3 +1,0 @@
-const s=`http://www.rssboard.org/files/rss-2.0-sample.xml "RSS 2.0 Sample"
-https://validator.w3.org/feed/docs/examples/atom.xml "Atom Sample"
-`;export{s as default};
