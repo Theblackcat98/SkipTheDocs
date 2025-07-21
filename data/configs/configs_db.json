@@ -1,0 +1,830 @@
+[
+  {
+    "toolName": "Vagrantfile",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/Vagrantfile/1.0.0/Vagrantfile"
+  },
+  {
+    "toolName": "Xresources",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/Xresources/1.0.0/Xresources"
+  },
+  {
+    "toolName": "ansible.cfg",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ansible/1.0.0/ansible.cfg"
+  },
+  {
+    "toolName": "apache2.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/apache2/1.0.0/apache2.conf"
+  },
+  {
+    "toolName": "audacity.cfg",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/audacity/1.0.0/audacity.cfg"
+  },
+  {
+    "toolName": "awesome.rc.lua",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/awesome/1.0.0/awesome.rc.lua"
+  },
+  {
+    "toolName": "awk.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/awk/1.0.0/awk.conf"
+  },
+  {
+    "toolName": "bashrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/bashrc/1.0.0/bashrc"
+  },
+  {
+    "toolName": "budgie.dconf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/budgie/1.0.0/budgie.dconf"
+  },
+  {
+    "toolName": "chef.client.rb",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/chef/1.0.0/chef.client.rb"
+  },
+  {
+    "toolName": "cinnamon.dconf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/cinnamon/1.0.0/cinnamon.dconf"
+  },
+  {
+    "toolName": "cmus.rc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/cmus/1.0.0/cmus.rc"
+  },
+  {
+    "toolName": "consul.json",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/consul/1.0.0/consul.json"
+  },
+  {
+    "toolName": "curlrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/curlrc/1.0.0/curlrc"
+  },
+  {
+    "toolName": "dhcpd.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/dhcpd/1.0.0/dhcpd.conf"
+  },
+  {
+    "toolName": "docker.daemon.json",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/docker/1.0.0/docker.daemon.json"
+  },
+  {
+    "toolName": "dovecot.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/dovecot/1.0.0/dovecot.conf"
+  },
+  {
+    "toolName": "dunstrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/dunstrc/1.0.0/dunstrc"
+  },
+  {
+    "toolName": "elasticsearch.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/elasticsearch/1.0.0/elasticsearch.yml"
+  },
+  {
+    "toolName": "etcd.conf.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/etcd/1.0.0/etcd.conf.yml"
+  },
+  {
+    "toolName": "fail2ban.jail.local",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/fail2ban/1.0.0/fail2ban.jail.local"
+  },
+  {
+    "toolName": "ffmpeg.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ffmpeg/1.0.0/ffmpeg.conf"
+  },
+  {
+    "toolName": "filezilla.xml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/filezilla/1.0.0/filezilla.xml"
+  },
+  {
+    "toolName": "fish-basic.fish",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/fish/1.0.0/fish-basic.fish"
+  },
+  {
+    "toolName": "fish_config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/fish/1.0.0/fish_config"
+  },
+  {
+    "toolName": "fluentd.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/fluentd/1.0.0/fluentd.conf"
+  },
+  {
+    "toolName": "gimprc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/gimprc/1.0.0/gimprc"
+  },
+  {
+    "toolName": "gitconfig",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/gitconfig/1.0.0/gitconfig"
+  },
+  {
+    "toolName": "github-actions.main.workflow",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/github/1.0.0/github-actions.main.workflow"
+  },
+  {
+    "toolName": "gitlab-ci.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/gitlab/1.0.0/gitlab-ci.yml"
+  },
+  {
+    "toolName": "gnome.dconf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/gnome/1.0.0/gnome.dconf"
+  },
+  {
+    "toolName": "gpg.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/gpg/1.0.0/gpg.conf"
+  },
+  {
+    "toolName": "grafana.ini",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/grafana/1.0.0/grafana.ini"
+  },
+  {
+    "toolName": "grep.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/grep/1.0.0/grep.conf"
+  },
+  {
+    "toolName": "helm.repositories.yaml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/helm/1.0.0/helm.repositories.yaml"
+  },
+  {
+    "toolName": "htoprc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/htoprc/1.0.0/htoprc"
+  },
+  {
+    "toolName": "i3.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/i3/1.0.0/i3.config"
+  },
+  {
+    "toolName": "iptables.rules.v4",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/iptables/1.0.0/iptables.rules.v4"
+  },
+  {
+    "toolName": "irssi.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/irssi/1.0.0/irssi.config"
+  },
+  {
+    "toolName": "jaeger.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/jaeger/1.0.0/jaeger.yml"
+  },
+  {
+    "toolName": "jenkins.xml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/jenkins/1.0.0/jenkins.xml"
+  },
+  {
+    "toolName": "kakoune.kak",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kakoune/1.0.0/kakoune.kak"
+  },
+  {
+    "toolName": "kdeglobals",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kdeglobals/1.0.0/kdeglobals"
+  },
+  {
+    "toolName": "kibana.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kibana/1.0.0/kibana.yml"
+  },
+  {
+    "toolName": "kitty.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kitty/1.0.0/kitty.conf"
+  },
+  {
+    "toolName": "kitty-theme.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kitty/1.0.0/kitty-theme.conf"
+  },
+  {
+    "toolName": "kritarc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kritarc/1.0.0/kritarc"
+  },
+  {
+    "toolName": "kubernetes.kubeconfig",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kubernetes/1.0.0/kubernetes.kubeconfig"
+  },
+  {
+    "toolName": "kustomization.yaml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/kustomization/1.0.0/kustomization.yaml"
+  },
+  {
+    "toolName": "logrotate.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/logrotate/1.0.0/logrotate.conf"
+  },
+  {
+    "toolName": "logstash.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/logstash/1.0.0/logstash.conf"
+  },
+  {
+    "toolName": "lxde-rc.xml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/lxde/1.0.0/lxde-rc.xml"
+  },
+  {
+    "toolName": "mate.dconf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/mate/1.0.0/mate.dconf"
+  },
+  {
+    "toolName": "micro.json",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/micro/1.0.0/micro.json"
+  },
+  {
+    "toolName": "mplayer.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/mplayer/1.0.0/mplayer.conf"
+  },
+  {
+    "toolName": "mpv.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/mpv/1.0.0/mpv.conf"
+  },
+  {
+    "toolName": "muttrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/muttrc/1.0.0/muttrc"
+  },
+  {
+    "toolName": "mysql.my.cnf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/mysql/1.0.0/mysql.my.cnf"
+  },
+  {
+    "toolName": "nanorc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/nanorc/1.0.0/nanorc"
+  },
+  {
+    "toolName": "neofetch.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/neofetch/1.0.0/neofetch.conf"
+  },
+  {
+    "toolName": "neovim.init.lua",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/neovim/1.0.0/neovim.init.lua"
+  },
+  {
+    "toolName": "newsboat.urls",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/newsboat/1.0.0/newsboat.urls"
+  },
+  {
+    "toolName": "nfs.exports",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/nfs/1.0.0/nfs.exports"
+  },
+  {
+    "toolName": "nginx.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/nginx/1.0.0/nginx.conf"
+  },
+  {
+    "toolName": "Neovim",
+    "author": "theblackcat98",
+    "description": "A solid starting point for a modern Neovim configuration in Lua. Includes package management with lazy.nvim, LSP, autocompletion, and Telescope.",
+    "version": "0.1.0",
+    "repositoryUrl": "https://github.com/folke/kickstart.nvim",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/nvim/1.0.0/nvim-lua-kickstart.lua"
+  },
+  {
+    "toolName": "openvpn.server.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/openvpn/1.0.0/openvpn.server.conf"
+  },
+  {
+    "toolName": "polybar.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/polybar/1.0.0/polybar.config"
+  },
+  {
+    "toolName": "postfix.main.cf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/postfix/1.0.0/postfix.main.cf"
+  },
+  {
+    "toolName": "postgresql.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/postgresql/1.0.0/postgresql.conf"
+  },
+  {
+    "toolName": "privoxy.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/privoxy/1.0.0/privoxy.config"
+  },
+  {
+    "toolName": "prometheus.yml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/prometheus/1.0.0/prometheus.yml"
+  },
+  {
+    "toolName": "puppet.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/puppet/1.0.0/puppet.conf"
+  },
+  {
+    "toolName": "ranger.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ranger/1.0.0/ranger.conf"
+  },
+  {
+    "toolName": "redis.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/redis/1.0.0/redis.conf"
+  },
+  {
+    "toolName": "rofi.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/rofi/1.0.0/rofi.config"
+  },
+  {
+    "toolName": "rsync.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/rsync/1.0.0/rsync.conf"
+  },
+  {
+    "toolName": "salt.master.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/salt/1.0.0/salt.master.conf"
+  },
+  {
+    "toolName": "samba.smb.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/samba/1.0.0/samba.smb.conf"
+  },
+  {
+    "toolName": "screenrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/screenrc/1.0.0/screenrc"
+  },
+  {
+    "toolName": "sed.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/sed/1.0.0/sed.conf"
+  },
+  {
+    "toolName": "skaffold.yaml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/skaffold/1.0.0/skaffold.yaml"
+  },
+  {
+    "toolName": "snort.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/snort/1.0.0/snort.conf"
+  },
+  {
+    "toolName": "spamassassin.local.cf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/spamassassin/1.0.0/spamassassin.local.cf"
+  },
+  {
+    "toolName": "ssh_config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ssh/1.0.0/ssh_config"
+  },
+  {
+    "toolName": "sway.config",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/sway/1.0.0/sway.config"
+  },
+  {
+    "toolName": "systemd.user.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/systemd/1.0.0/systemd.user.conf"
+  },
+  {
+    "toolName": "terraform.rc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/terraform/1.0.0/terraform.rc"
+  },
+  {
+    "toolName": "Tmux",
+    "author": "gpakosz",
+    "description": "A clean and functional Tmux setup. Features a nice status bar, vi-style keybindings for pane navigation, and mouse support.",
+    "version": "1.0.0",
+    "repositoryUrl": "https://github.com/gpakosz/.tmux",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/tmux/1.0.0/tmux-basic.conf"
+  },
+  {
+    "toolName": "tmux.conf",
+    "author": "tmux",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/tmux/tmux",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/tmux/1.0.0/tmux.conf"
+  },
+  {
+    "toolName": "torrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/torrc/1.0.0/torrc"
+  },
+  {
+    "toolName": "vlcrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/vlcrc/1.0.0/vlcrc"
+  },
+  {
+    "toolName": "waybar.json",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/waybar/1.0.0/waybar.json"
+  },
+  {
+    "toolName": "weechat.conf",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/weechat/1.0.0/weechat.conf"
+  },
+  {
+    "toolName": "wgetrc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/wgetrc/1.0.0/wgetrc"
+  },
+  {
+    "toolName": "xfce4-panel.xml",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/xfce4/1.0.0/xfce4-panel.xml"
+  },
+  {
+    "toolName": "xmonad.hs",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/xmonad/1.0.0/xmonad.hs"
+  },
+  {
+    "toolName": "zathurarc",
+    "author": "",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/zathurarc/1.0.0/zathurarc"
+  },
+  {
+    "toolName": "Zsh",
+    "author": "sorin-ionescu",
+    "description": "A minimal .zshrc file. Includes a simple git-aware prompt, common aliases, and history settings without needing a heavy framework like Oh My Zsh.",
+    "version": "1.0.0",
+    "repositoryUrl": "https://github.com/sorin-ionescu/prezto",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/zsh/1.0.0/zsh-simple.zshrc"
+  },
+  {
+    "toolName": "zshrc",
+    "author": "",
+    "description": "",
+    "version": "1.0.0",
+    "repositoryUrl": "https://github.com/zsh-users/zsh",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/zshrc/1.0.0/zshrc"
+  },
+  {
+    "toolName": "Alacritty",
+    "author": "",
+    "description": "",
+    "version": "1.0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/alacritty/1.0.0/alacritty-theme.toml"
+  },
+  {
+    "toolName": "Alacritty",
+    "author": "alacritty",
+    "description": "A cross-platform, OpenGL terminal emulator.",
+    "version": "0.15.1",
+    "repositoryUrl": "https://github.com/alacritty/alacritty",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/alacritty/1.0.0/alacritty.toml"
+  },
+  {
+    "toolName": "Copilot",
+    "author": "microsoft",
+    "description": "",
+    "version": "0.0",
+    "repositoryUrl": "https://github.com/",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/name/1.0.0/name.toolsets.jsonc"
+  },
+  {
+    "displayName": "Ghostty",
+    "toolName": "ghostty",
+    "author": "",
+    "description": "A configuration for Ghostty.",
+    "tags": [],
+    "version": "1.0.0",
+    "repositoryUrl": "",
+    "relatedConfigs": "",
+    "lastModified": "2025-07-21T08:34:22.537731Z",
+    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ghostty/1.0.0/ghostty.toml"
+  }
+]

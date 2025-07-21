@@ -1,0 +1,34 @@
+name: Update Config DB
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data/configs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Build config database
+        run: python data/get_conf_from_repo/utils/build_config_db.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/configs/configs_db.json
+          git diff --staged --quiet || (git commit -m "Automated: Update configs_db.json" && git push)

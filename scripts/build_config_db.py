@@ -54,6 +54,11 @@ def build_database():
                 continue
 
             file_path = os.path.join(root, file)
+            
+            # Explicitly skip symbolic links to avoid errors
+            if os.path.islink(file_path):
+                continue
+                
             frontmatter = parse_frontmatter(file_path)
             
             if frontmatter:
