@@ -11,21 +11,22 @@ assignees: ''
 **Config Name:**
 The name of the tool and the extension it expects.
 
-**Tool/Application:**
-The tool or application this configuration is for (e.g., Neovim, tmux, Zsh, Apache).
-
-**Category:**
-Choose a category that best describes your config (e.g., `development`, `productivity`, `terminal`, `system`, `security`).
-
-**Description:**
-A brief description of the application and any key features.
-
-## Config Content
-
-Please paste your configuration code below. Ensure it's properly formatted and includes any necessary YAML front matter as described in `CONTRIBUTING.md`.
-
 ```
-# Your configuration code here
+
+---
+displayName: "Alacritty" // displayed name on SkipTheDocs
+toolName: "alacritty" // the executable name
+author: "alacritty"
+description: "A cross-platform, OpenGL terminal emulator."
+tags: [terminal, emulator, gpu]
+version: "1.0.0" //version the config is written for
+repositoryUrl: "https://github.com/alacritty/alacritty"
+relatedConfigs: "data/configs/alacritty/1.0.0/alacritty-theme.toml" // A list of paths to related configurations, establishing explicit links.
+lastModified: "2025-07-21T07:05:43.750Z"
+---
+
+
+# Your configuration content here
 ```
 
 **By submitting this Config, I confirm that:**
