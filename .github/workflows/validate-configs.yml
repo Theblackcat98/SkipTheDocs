@@ -1,0 +1,25 @@
+name: Validate Config Files
+
+on:
+  pull_request:
+    paths:
+      - 'data/configs/**'
+  push:
+    paths:
+      - 'data/configs/**'
+  schedule:
+    - cron: '0 0 * * 0' # weekly
+
+jobs:
+  validate-configs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm install gray-matter
+      - name: Run validation
+        run: node validate-configs.js
