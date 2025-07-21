@@ -2,18 +2,21 @@ import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import ConfigCard from './components/ConfigCard';
+import TagFilter from './components/TagFilter';
 import Modal from './components/Modal';
 import { ConfigSubmissionForm } from './components/ConfigSubmissionForm';
-import type { ConfigFile, PopularTool, ConfigData } from './types.ts';
-import { MetadataDb } from './types.ts';
-import { POPULAR_TOOLS } from './constants.tsx';
+import type { ConfigFile, PopularTool, ConfigData } from './types';
+import { MetadataDb } from './types';
+import { POPULAR_TOOLS } from './constants';
 import matter from 'gray-matter';
-import SkipTheDocs from './components/SkipTheDocs.tsx';
+import SkipTheDocs from './components/SkipTheDocs';
+import { ExternalLink } from 'lucide-react'; // Import the ExternalLink icon
 
 const App: React.FC = () => {
   const [configs, setConfigs] = useState<ConfigFile[]>([]);
   const [isAppLoading, setIsAppLoading] = useState(true);
   const [filterTerm, setFilterTerm] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeModalConfig, setActiveModalConfig] = useState<ConfigFile | null>(null);
   const [isSubmissionFormOpen, setIsSubmissionFormOpen] = useState(false);
@@ -148,18 +151,52 @@ const App: React.FC = () => {
     }
   }, [activeModalConfig, downloadFile]);
 
-  const filteredConfigs = useMemo(() => {
-    if (!filterTerm.trim()) return configs;
-    const lowercasedFilter = filterTerm.toLowerCase();
-    return configs.filter(config =>
-      config.toolName.toLowerCase().includes(lowercasedFilter) ||
-      config.fileName.toLowerCase().includes(lowercasedFilter) ||
-      config.description.toLowerCase().includes(lowercasedFilter)
-    );
-  }, [configs, filterTerm]);
-  
-  const clearFilter = () => setFilterTerm('');
+  // Get all unique tags from all configs
+  const allTags = useMemo(() => {
+    const tags = new Set<string>();
+    configs.forEach(config => {
+      config.tags?.forEach(tag => tags.add(tag));
+    });
+    return Array.from(tags).sort();
+  }, [configs]);
 
+  const filteredConfigs = useMemo(() => {
+    let result = [...configs];
+    
+    // Apply search term filter
+    if (filterTerm.trim()) {
+      const lowercasedFilter = filterTerm.toLowerCase();
+      result = result.filter(config =>
+        config.toolName.toLowerCase().includes(lowercasedFilter) ||
+        config.fileName.toLowerCase().includes(lowercasedFilter) ||
+        config.description.toLowerCase().includes(lowercasedFilter) ||
+        config.tags?.some(tag => tag.toLowerCase().includes(lowercasedFilter))
+      );
+    }
+    
+    // Apply tag filter
+    if (selectedTags.length > 0) {
+      result = result.filter(config => 
+        selectedTags.every(tag => config.tags?.includes(tag))
+      );
+    }
+    
+    return result;
+  }, [configs, filterTerm, selectedTags]);
+  
+  const handleTagToggle = useCallback((tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag) 
+        : [...prev, tag]
+    );
+  }, []);
+  
+  const clearFilters = useCallback(() => {
+    setFilterTerm('');
+    setSelectedTags([]);
+  }, []);
+  
   const handleConfigSubmission = async (data: ConfigData) => {
     setIsSubmitting(true);
     try {
@@ -209,12 +246,31 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-900 text-gray-100 selection:bg-indigo-500 selection:text-white">
       <Header onSubmitClick={() => setIsSubmissionFormOpen(true)} />
       <main className="container mx-auto px-4 py-8 sm:py-12">
-        <div className="flex flex-col items-center gap-12">
+        <div className="flex flex-col items-center gap-5">
           <SkipTheDocs onSubmitClick={() => setIsSubmissionFormOpen(true)} />
-          <SearchBar 
-            filterTerm={filterTerm}
-            setFilterTerm={setFilterTerm}
-          />
+          
+          <div className="w-full max-w-4xl mx-auto space-y-4">
+            <SearchBar 
+              filterTerm={filterTerm}
+              setFilterTerm={setFilterTerm}
+            />
+            
+
+            
+            {(filterTerm || selectedTags.length > 0) && (
+              <div className="flex items-center justify-between text-sm text-gray-400">
+                <span>
+                  Showing {filteredConfigs.length} result{filteredConfigs.length !== 1 ? 's' : ''}
+                </span>
+                <button 
+                  onClick={clearFilters}
+                  className="text-indigo-400 hover:text-indigo-300 transition-colors"
+                >
+                  Clear filters
+                </button>
+              </div>
+            )}
+          </div>
 
           <div className="w-full max-w-5xl">
             <div className="text-center mb-6">
@@ -233,30 +289,35 @@ const App: React.FC = () => {
                 </button>
               ))}
             </div>
+            <TagFilter 
+              tags={allTags} 
+              selectedTags={selectedTags} 
+              onTagToggle={handleTagToggle} 
+            />
           </div>
 
-          <div className="w-full max-w-6xl mt-8 border-t border-gray-700/50 pt-12">
+          <div className="w-full max-w-6xl mt-8 border-t border-gray-700/50 pt-12" style={{paddingTop: '1.5rem', marginTop: '0px'}}>
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mb-6 px-2">
               <h2 className="text-3xl font-bold text-gray-100 mb-4 sm:mb-0">Configuration Library</h2>
-               {filterTerm && (
-                 <button 
-                    onClick={clearFilter}
-                    className="text-sm text-indigo-400 hover:text-indigo-300 hover:underline"
-                  >
-                   Clear filter ({filteredConfigs.length} results)
-                 </button>
-               )}
+              {(filterTerm || selectedTags.length > 0) && (
+                <button 
+                  onClick={clearFilters}
+                  className="text-sm text-indigo-400 hover:text-indigo-300 hover:underline"
+                >
+                  Clear filters ({filteredConfigs.length} results)
+                </button>
+              )}
             </div>
-
             {filteredConfigs.length > 0 ? (
-               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {filteredConfigs.map(config => (
-                  <ConfigCard 
-                    key={config.id}
-                    config={config} 
-                    onView={openModal} 
-                    onDownload={handleDownload}
-                  />
+                  <div key={config.id} id={config.id}>
+                    <ConfigCard 
+                      config={config} 
+                      onView={openModal} 
+                      onDownload={handleDownload}
+                    />
+                  </div>
                 ))}
               </div>
             ) : (
@@ -266,39 +327,104 @@ const App: React.FC = () => {
                 </svg>
                 <h3 className="mt-2 text-xl font-semibold text-gray-200">No Results Found</h3>
                 <p className="mt-1 text-base text-gray-400">
-                  Your search for "{filterTerm}" did not match any configurations.
+                  {filterTerm 
+                    ? `Your search for "${filterTerm}" did not match any configurations.` 
+                    : 'No configurations match the selected filters.'}
                 </p>
                 <button 
-                  onClick={clearFilter}
+                  onClick={clearFilters}
                   className="mt-4 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
                 >
-                  Clear Search
+                  Clear Filters
                 </button>
               </div>
             )}
           </div>
         </div>
       </main>
-      <Modal 
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        config={activeModalConfig}
-        onDownload={handleModalDownload}
-      />
-      {isSubmissionFormOpen && (
-        <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
-          onClick={() => setIsSubmissionFormOpen(false)}
-        >
-          <ConfigSubmissionForm
-            onClose={() => setIsSubmissionFormOpen(false)}
+
+      {/* Config Modal */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {activeModalConfig && (
+          <>
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-2xl font-bold text-gray-100">{activeModalConfig.toolName}</h2>
+                <p className="text-indigo-400 font-mono text-sm">{activeModalConfig.fileName}</p>
+              </div>
+              <button
+                onClick={handleModalDownload}
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Download
+              </button>
+            </div>
+
+            {activeModalConfig.relatedConfigs && activeModalConfig.relatedConfigs.length > 0 && (
+              <div className="mb-6">
+                <h3 className="text-sm font-medium text-gray-300 mb-2">Related Configs</h3>
+                <div className="flex flex-wrap gap-2">
+                  {activeModalConfig.relatedConfigs.map((related, index) => {
+                    const relatedConfig = configs.find(c => 
+                      c.fileName === related || c.id === related
+                    );
+                    
+                    if (!relatedConfig) return null;
+                    
+                    return (
+                      <a
+                        key={index}
+                        href={`#${relatedConfig.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          closeModal();
+                          // Scroll to the related config
+                          document.getElementById(relatedConfig.id)?.scrollIntoView({
+                            behavior: 'smooth'
+                          });
+                          // Highlight the related config
+                          const element = document.getElementById(relatedConfig.id);
+                          if (element) {
+                            element.classList.add('ring-2', 'ring-indigo-500');
+                            setTimeout(() => {
+                              element.classList.remove('ring-2', 'ring-indigo-500');
+                            }, 2000);
+                          }
+                        }}
+                        className="inline-flex items-center gap-1 px-3 py-1 text-sm text-indigo-400 bg-indigo-900/30 rounded-full border border-indigo-800 hover:bg-indigo-800/30 transition-colors"
+                      >
+                        {relatedConfig.displayName || relatedConfig.toolName}
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
+            <div className="bg-gray-800 rounded-lg p-4 overflow-auto max-h-[60vh]">
+              <pre className="text-sm text-gray-200">
+                <code>{activeModalConfig.content}</code>
+              </pre>
+            </div>
+          </>
+        )}
+      </Modal>
+
+      {/* Submission Form Modal */}
+      <Modal isOpen={isSubmissionFormOpen} onClose={() => setIsSubmissionFormOpen(false)}>
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-100 mb-6">Submit a New Configuration</h2>
+          <ConfigSubmissionForm 
             onSubmit={handleConfigSubmission}
             isLoading={isSubmitting}
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-4xl max-h-[90vh]"
+            onClose={() => setIsSubmissionFormOpen(false)}
           />
         </div>
-      )}
+      </Modal>
     </div>
   );
 };
