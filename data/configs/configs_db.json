@@ -9,7 +9,7 @@
     "repositoryUrl": "https://github.com/",
     "relatedConfigs": "",
     "lastModified": "2025-07-21T09:10:44.603745Z",
-    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/Vagrantfile/1.0.0/Vagrantfile"
+    "filePath": "/data/configs/Vagrantfile/1.0.0/Vagrantfile"
   },
   {
     "displayName": "Xresources",
@@ -21,7 +21,7 @@
     "repositoryUrl": "https://github.com/",
     "relatedConfigs": "",
     "lastModified": "2025-07-21T09:10:44.604351Z",
-    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/Xresources/1.0.0/Xresources"
+    "filePath": "/data/configs/Xresources/1.0.0/Xresources"
   },
   {
     "displayName": "Ansible.cfg",
@@ -33,7 +33,7 @@
     "repositoryUrl": "https://github.com/",
     "relatedConfigs": "",
     "lastModified": "2025-07-21T09:10:44.604837Z",
-    "filePath": "/home/nick/Documents/Projects/POSTED/SKD/SkipTheDocs/data/configs/ansible/1.0.0/ansible.cfg"
+    "filePath": "/SkipTheDocs/data/configs/ansible/1.0.0/ansible.cfg"
   },
   {
     "displayName": "Apache2.conf",

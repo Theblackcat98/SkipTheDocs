@@ -5,6 +5,7 @@ import ConfigCard from './components/ConfigCard';
 import Modal from './components/Modal';
 import { ConfigSubmissionForm } from './components/ConfigSubmissionForm';
 import type { ConfigFile, PopularTool, ConfigData } from './types.ts';
+import { MetadataDb } from './types.ts';
 import { POPULAR_TOOLS } from './constants.tsx';
 import matter from 'gray-matter';
 import SkipTheDocs from './components/SkipTheDocs.tsx';
@@ -19,44 +20,96 @@ const App: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submittedConfigData, setSubmittedConfigData] = useState<string | null>(null);
 
+
   useEffect(() => {
     const loadAllConfigs = async () => {
         try {
-            const configModules = import.meta.glob('/data/configs/*.*', { query: '?raw', import: 'default' });
-            const configsData = await Promise.all(
-                Object.entries(configModules).map(async ([path, getContent]) => {
-                    const fileContent = await (getContent() as Promise<string>);
-                    if (fileContent.trim() === '') {
-                        console.warn(`Fetched file is empty: ${path}`);
-                        return null;
-                    }
+        const response = await fetch('./data/configs/configs_db.json');
+        if (!response.ok) {
+            throw new Error('Failed to fetch configs_db.json');
+        }
+        // 3. Use the imported `MetadataDb` type here
+        const metadataDb: MetadataDb = await response.json();
 
-                    const { data, content } = matter(fileContent);
-                    const fileName = path.split('/').pop() || '';
+        const configContentModules = import.meta.glob('/data/configs/*/*/*.*', {
+            query: '?raw',
+            import: 'default',
+        });
+        console.log('DEBUG 1: Glob found these modules:', configContentModules);
 
-                    return {
-                        id: fileName.replace(/[^a-zA-Z0-9]/g, '-'),
-                        toolName: data.toolName || 'Unknown',
-                        author: data.author || 'Unknown',
-                        description: data.description || 'No description provided.',
-                        version: data.version || 'N/A',
-                        repositoryUrl: data.repositoryUrl || '',
-                        fileName: fileName,
-                        filePath: path,
-                        content: content,
-                    } as ConfigFile;
-                })
-            );
-            setConfigs(configsData.filter((c): c is ConfigFile => c !== null));
+        const configsDataPromises = Object.entries(configContentModules).map(
+            async ([path, getContent]) => {
+            const pathRegex = /data\/configs\/([^/]+)\/([^/]+)\/(.+)$/;
+            const match = path.match(pathRegex);
+            console.log(`DEBUG 2: Processing path [${path}]. Match result:`, match);
+
+            if (!match) {
+                console.warn(`Skipping file with unexpected path: ${path}`);
+                return null;
+            }
+
+            const [, pathToolName, pathVersion, fileName] = match;
+
+            if (pathVersion === 'latest') return null;
+
+            try {
+                const fileContent = (await getContent()) as string;
+                if (typeof fileContent !== 'string' || fileContent.trim() === '') {
+                console.warn(`Fetched file is empty: ${path}`);
+                return null;
+                }
+
+                const { content, data: frontmatter } = matter(fileContent);
+                const toolMetadata = metadataDb[pathToolName] || {};
+                const finalToolName = frontmatter.toolName || pathToolName;
+                const finalVersion = frontmatter.version || pathVersion;
+                let relatedConfigs: string[] = [];
+                if (frontmatter.relatedConfigs) {
+                    relatedConfigs = Array.isArray(frontmatter.relatedConfigs) 
+                        ? frontmatter.relatedConfigs 
+                        : [frontmatter.relatedConfigs];
+                }
+
+                // Create the final object, which must match the `ConfigFile` interface
+                return {
+                toolName: finalToolName,
+                version: finalVersion,
+                displayName: frontmatter.displayName || toolMetadata.displayName || finalToolName,
+                author: frontmatter.author || toolMetadata.author || 'Unknown',
+                description: frontmatter.description || toolMetadata.description || 'No description provided.',
+                repositoryUrl: frontmatter.repositoryUrl || toolMetadata.repositoryUrl || '',
+                tags: frontmatter.tags || [],
+                relatedConfigs: relatedConfigs,
+                lastModified: frontmatter.lastModified,
+                id: `${finalToolName}-${finalVersion}`.replace(/[^a-zA-Z0-9]/g, '-'),
+                fileName: fileName,
+                filePath: path,
+                content: content.trim(),
+                } as ConfigFile; // Asserting as the imported type
+
+            } catch (e) {
+                console.error(`Error processing file: ${path}`, e);
+                return null;
+            }
+            }
+        );
+
+        const resolvedConfigs = await Promise.all(configsDataPromises);
+        
+        console.log('DEBUG 3: Final array before filtering and setting state:', resolvedConfigs);
+        // This filter now correctly checks against the imported `ConfigFile` type
+        setConfigs(resolvedConfigs.filter((c): c is ConfigFile => c !== null));
+        console.log('DEBUG 4: Final array being passed to setConfigs:', resolvedConfigs);
+        
         } catch (error) {
-            console.error("A critical error occurred while loading config files:", error);
+        console.error("A critical error occurred while loading config files:", error);
         } finally {
-            setIsAppLoading(false);
+        setIsAppLoading(false);
         }
     };
 
     loadAllConfigs();
-  }, []);
+    }, []);
 
   const handleQuickFilter = useCallback((tool: PopularTool) => {
     setFilterTerm(tool.name);
