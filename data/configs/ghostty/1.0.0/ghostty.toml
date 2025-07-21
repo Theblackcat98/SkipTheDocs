@@ -1,3 +1,14 @@
+---
+displayName: Ghostty
+toolName: ghostty
+author: ''
+description: A configuration for Ghostty.
+tags: []
+version: 1.0.0
+repositoryUrl: ''
+relatedConfigs: ''
+lastModified: '2025-07-21T08:34:22.537731Z'
+---
 # The font families to use.
 # 
 # You can generate the list of valid values using the CLI:

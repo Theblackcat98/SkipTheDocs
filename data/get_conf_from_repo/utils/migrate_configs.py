@@ -9,12 +9,20 @@ def migrate_configs():
     Migrates configuration files from the flat 'data/configs' directory to a new
     structured format: 'configs/<tool_name>/<version>/'.
     """
-    source_dir = "data/configs"
-    target_base_dir = "configs"
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..'))
+    
+    # The original configs directory is the source
+    source_dir = os.path.join(project_root, "data", "configs")
+    # The new structure will be created within this same directory
+    target_base_dir = source_dir
     version = "1.0.0"
 
-    if not os.path.exists(target_base_dir):
-        os.makedirs(target_base_dir)
+    if not os.path.isdir(source_dir):
+        print(f"Error: The source directory '{source_dir}' does not exist.")
+        return
+
+    os.makedirs(target_base_dir, exist_ok=True)
 
     processed_tools = set()
 

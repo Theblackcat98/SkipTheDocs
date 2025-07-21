@@ -1,0 +1,72 @@
+import os
+import yaml
+import json
+
+def parse_frontmatter(file_path):
+    """
+    Parses YAML frontmatter from a file.
+    Returns the parsed data as a dictionary, or None if no frontmatter is found.
+    """
+    try:
+        with open(file_path, 'r') as f:
+            lines = f.readlines()
+        
+        if lines and lines[0].strip() == '---':
+            frontmatter_lines = []
+            end_index = -1
+            for i, line in enumerate(lines[1:]):
+                if line.strip() == '---':
+                    end_index = i + 1
+                    break
+                frontmatter_lines.append(line)
+            
+            if end_index != -1:
+                frontmatter_str = "".join(frontmatter_lines)
+                return yaml.safe_load(frontmatter_str)
+    except Exception as e:
+        print(f"Error parsing frontmatter from '{file_path}': {e}")
+    return None
+
+def build_database():
+    """
+    Walks through the 'configs' directory, parses frontmatter from each file,
+    and builds a JSON database.
+    """
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # The project root is three levels up from the script's location
+    project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..'))
+    configs_dir = os.path.join(project_root, "data", "configs")
+    database = []
+
+    if not os.path.isdir(configs_dir):
+        print(f"Error: The 'configs' directory was not found at '{configs_dir}'.")
+        print("Please run the migration script first.")
+        return
+
+    for root, dirs, files in os.walk(configs_dir):
+        # Ignore the 'latest' symlinks to avoid processing duplicates
+        if 'latest' in dirs:
+            dirs.remove('latest')
+
+        for file in files:
+            # Skip the database file itself
+            if file == 'configs_db.json':
+                continue
+
+            file_path = os.path.join(root, file)
+            frontmatter = parse_frontmatter(file_path)
+            
+            if frontmatter:
+                # Add the file path for reference
+                frontmatter['filePath'] = file_path
+                database.append(frontmatter)
+
+    output_path = os.path.join(configs_dir, "configs_db.json")
+    with open(output_path, 'w') as f:
+        json.dump(database, f, indent=2)
+    
+    print(f"Successfully built config database at '{output_path}' with {len(database)} entries.")
+
+if __name__ == "__main__":
+    # Note: This script requires PyYAML. Install it with: pip install pyyaml
+    build_database()
