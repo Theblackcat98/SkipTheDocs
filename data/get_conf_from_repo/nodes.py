@@ -228,18 +228,29 @@ class GenerateConfig(Node):
         # Get content of documentation files
         doc_indices = config_info.get("documentation_files", [])
         doc_content_map = get_content_for_indices(files_data, doc_indices)
-        
+
         doc_context = "\n".join(
-            [f"--- Content of {path} ---\n{content}" for path, content in doc_content_map.items()]
+            [
+                f"--- Content of {path} ---\n{content}"
+                for path, content in doc_content_map.items()
+            ]
         )
 
         # Prepare context for the final prompt
         config_files_summary = "\n".join(
-            [f"- {d['file_path']}: {d['description']}" for d in config_info.get("configuration_files", [])]
+            [
+                f"- {d['file_path']}: {d['description']}"
+                for d in config_info.get("configuration_files", [])
+            ]
         )
 
-        # Placeholder for the user's system prompt
-        system_prompt = """
+        language_instruction = ""
+        if language.lower() != "english":
+            language_instruction = f"IMPORTANT: Generate the output in **{language.capitalize()}** language.\n\n"
+
+        # Consolidate the prompt into a single f-string.
+        # Note the double curly braces `{{...}}` to escape them for the f-string formatting.
+        prompt = f"""
 You are an expert technical writer and configuration file generator. Your primary goal is to create a "blank," fully-commented, and example-rich configuration file based on provided documentation. The user will provide you with documentation for an application's configuration file (e.g., for Alacritty, Neovim, etc.).
 
 When I say **"blank,"** I mean that every single line of the generated configuration file must be **commented out**. The resulting file should be completely inert and serve as a comprehensive template that a user can edit by uncommenting and modifying lines.
@@ -254,7 +265,7 @@ When I say **"blank,"** I mean that every single line of the generated configura
     *   **Description:** First, write a brief, commented-out description of the setting's purpose. This description should be derived directly from the documentation. If the docs mention default values or a list of possible options (e.g., `"Full" | "None" | "Transparent"`), include this information in your description.
     *   **Example:** On a new line, provide a commented-out example of the setting in use. This line must show the correct syntax for the setting.
         *   The example should use a plausible, often **non-default**, value to clearly demonstrate how a user might customize it.
-        *   Pay meticulous attention to the required data type and syntax (e.g., strings in quotes `" "`, booleans `true | false`, integers, floats, TOML tables like `{ key = "value" }`, and arrays of tables like `[[section]]`).
+        *   Pay meticulous attention to the required data type and syntax (e.g., strings in quotes `" "`, booleans `true | false`, integers, floats, TOML tables like `{{ key = "value" }}`, and arrays of tables like `[[section]]`).
 
 **Formatting and Style Rules:**
 
@@ -278,14 +289,14 @@ Your final output should be a single, comprehensive, and self-documenting config
 
 *   **Section Headers:** Use commented-out TOML section headers (e.g., `# [window]`) to structure the file logically, mirroring the `[table]` and `[table.subtable]` structure from the documentation. Add a brief, commented-out description for each major section.
 *   **Nested Tables:** For nested tables (e.g., `[colors.primary]`), ensure the full path is commented out as the header (`# [colors.primary]`).
-*   **Arrays of Tables:** When documentation specifies an array of tables (e.g., `bindings = [{...}]` or `enabled = [{...}]`), you must represent this using the `[[table_name]]` syntax, ensuring *both* square brackets are commented out, and provide an example of *one* such entry. If the documentation provides a default example for an array of tables, use that as your commented example.
+*   **Arrays of Tables:** When documentation specifies an array of tables (e.g., `bindings = [{{...}}]` or `enabled = [{{...}}]`), you must represent this using the `[[table_name]]` syntax, ensuring *both* square brackets are commented out, and provide an example of *one* such entry. If the documentation provides a default example for an array of tables, use that as your commented example.
     *   Example:
         ```toml
         # Array with all available hints.
         # [[hints.enabled]]
         # regex = "example.com"
         # action = "Copy"
-        # binding = { key = "H", mods = "Control" }
+        # binding = {{ key = "H", mods = "Control" }}
         ```
 *   **Default Values:** Always explicitly state the `Default:` value in the comment for each setting if the documentation provides it.
 *   **Data Types and Syntax:** Pay extremely close attention to the TOML data types and syntax required:
@@ -293,7 +304,7 @@ Your final output should be a single, comprehensive, and self-documenting config
     *   Integers: `<integer>` (plain numbers).
     *   Floats: `<float>` (numbers with a decimal point).
     *   Booleans: `true` or `false` (lowercase).
-    *   Inline Tables: `{ key = value, another_key = value }`.
+    *   Inline Tables: `{{ key = value, another_key = value }}`.
     *   Arrays: `[value1, value2, value3]`.
     *   Arrays of Tables: `[[table]] ... [[table]]`.
     *   `"None"` as a string literal when specified by the docs, not `null` or `nil`.
@@ -309,15 +320,8 @@ Before presenting the output, perform a final review to ensure:
 5.  **Order:** The order of sections and settings matches the documentation.
 
 Your output should be the complete, ready-to-use "blank" configuration file.
-"""
 
-        language_instruction = ""
-        if language.lower() != "english":
-            language_instruction = f"IMPORTANT: Generate the output in **{language.capitalize()}** language.\n\n"
-
-        prompt = f"""
-{system_prompt}
-
+---
 Project Name: {project_name}
 
 Configuration Analysis Summary:
@@ -344,22 +348,25 @@ file_name: "default_config"
 file_extension: "toml"
 content: |
   # Main configuration for the application
-  host = "localhost"
-  port = 8080
-  
-  [database]
-  user = "admin"
-  password = "changeme"
+  # host = "localhost"
+  # port = 8080
+  #
+  # [database]
+  # user = "admin"
+  # password = "changeme"
 ```
 """
         response = call_llm(prompt, use_cache=use_cache)
 
         # --- Validation ---
         try:
+            # The response should contain a YAML block.
             yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
             generated_data = yaml.safe_load(yaml_str)
         except (IndexError, yaml.YAMLError) as e:
-            raise ValueError(f"Failed to parse LLM output as YAML: {e}\nResponse was:\n{response}")
+            raise ValueError(
+                f"Failed to parse LLM output as YAML: {e}\nResponse was:\n{response}"
+            )
 
         if not isinstance(generated_data, dict):
             raise ValueError("LLM Output is not a dictionary")
@@ -370,10 +377,30 @@ content: |
             if key not in generated_data:
                 raise ValueError(f"Missing required key '{key}' in LLM output.")
             if not isinstance(generated_data[key], str):
-                 raise ValueError(f"Key '{key}' must be a string.")
+                raise ValueError(f"Key '{key}' must be a string.")
 
-        print(f"Successfully generated config file content for '{generated_data['file_name']}.{generated_data['file_extension']}'.")
+        print(
+            f"Successfully generated config file content for '{generated_data['file_name']}.{generated_data['file_extension']}'."
+        )
         return generated_data
 
     def post(self, shared, prep_res, exec_res):
         shared["generated_config_details"] = exec_res
+
+        # --- Save to file ---
+        output_dir = shared.get("output_dir", "output")
+        os.makedirs(output_dir, exist_ok=True)
+
+        file_name = exec_res["file_name"]
+        file_extension = exec_res["file_extension"]
+        content = exec_res["content"]
+        
+        file_path = os.path.join(output_dir, f"{file_name}.{file_extension}")
+        
+        try:
+            with open(file_path, "w", encoding="utf-8") as f:
+                f.write(content)
+            print(f"Successfully saved configuration to '{file_path}'")
+            shared["final_output_path"] = file_path
+        except IOError as e:
+            print(f"Error saving configuration file: {e}")
