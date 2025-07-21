@@ -1,0 +1,35 @@
+const n=`---
+displayName: Kustomization.yaml
+toolName: kustomization.yaml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.621891Z'
+---
+#
+# Kustomize configuration file
+#
+# For more information, see https://kustomize.io/
+
+# List of resources to include in the build
+resources:
+  - deployment.yaml
+  - service.yaml
+
+# List of patches to apply to the resources
+patchesStrategicMerge:
+  - patch.yaml
+
+# Add a common label to all resources
+commonLabels:
+  app: my-app
+
+# Add a prefix to the name of all resources
+namePrefix: dev-
+
+# Add a suffix to the name of all resources
+nameSuffix: -v1
+`;export{n as default};

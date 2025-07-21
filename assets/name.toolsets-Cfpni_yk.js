@@ -1,0 +1,24 @@
+const t=`---
+displayName: Copilot
+toolName: Copilot
+author: microsoft
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.640820Z'
+---
+
+// Place your tool sets here...
+// Example:
+// {
+// 	"toolSetName": {
+// 		"tools": [
+// 			"someTool",
+// 			"anotherTool"
+// 		],
+// 		"description": "description",
+// 		"icon": "tools"
+// 	}
+// }`;export{t as default};

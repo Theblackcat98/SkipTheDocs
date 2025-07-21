@@ -1,0 +1,31 @@
+const e=`---
+displayName: Kubernetes.kubeconfig
+toolName: kubernetes.kubeconfig
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.621547Z'
+---
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: "..."
+    server: "https://..."
+  name: "my-cluster"
+contexts:
+- context:
+    cluster: "my-cluster"
+    user: "my-user"
+  name: "my-context"
+current-context: "my-context"
+kind: Config
+preferences: {}
+users:
+- name: "my-user"
+  user:
+    client-certificate-data: "..."
+    client-key-data: "..."
+`;export{e as default};

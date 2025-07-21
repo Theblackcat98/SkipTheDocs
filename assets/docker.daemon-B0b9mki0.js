@@ -1,0 +1,24 @@
+const n=`---
+displayName: Docker.daemon.json
+toolName: docker.daemon.json
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.609861Z'
+---
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "20GB",
+      "enabled": true
+    }
+  },
+  "experimental": false,
+  "features": {
+    "buildkit": true
+  }
+}
+`;export{n as default};

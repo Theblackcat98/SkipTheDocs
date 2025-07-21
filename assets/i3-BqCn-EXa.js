@@ -1,0 +1,39 @@
+const n=`---
+displayName: I3.config
+toolName: i3.config
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.617467Z'
+---
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+set  Mod4
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Use Mouse+ to drag floating windows to their wanted position
+floating_modifier
+
+# start a terminal
+bindsym +Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym +Shift+q kill
+
+# start dmenu (a program launcher)
+bindsym +d exec dmenu_run
+
+# change focus
+bindsym +j focus left
+bindsym +k focus down
+bindsym +l focus up
+bindsym +semicolon focus right
+`;export{n as default};

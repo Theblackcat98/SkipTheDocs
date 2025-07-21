@@ -1,0 +1,29 @@
+const n=`---
+displayName: Rsync.conf
+toolName: rsync.conf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.631586Z'
+---
+# This is a dummy config file for rsync. Rsync is usually configured with command-line options.
+# However, you can create a daemon with a configuration file.
+# This is a sample rsyncd.conf file.
+#
+# pid file = /var/run/rsyncd.pid
+# lock file = /var/run/rsync.lock
+# log file = /var/log/rsync.log
+#
+# [files]
+#     path = /srv/files
+#     comment = My files
+#     read only = true
+#     list = yes
+#     uid = nobody
+#     gid = nobody
+#     auth users = user
+#     secrets file = /etc/rsyncd.secrets
+`;export{n as default};

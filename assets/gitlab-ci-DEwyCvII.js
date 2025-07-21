@@ -1,0 +1,62 @@
+const e=`---
+displayName: Gitlab-ci.yml
+toolName: gitlab-ci.yml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.615060Z'
+---
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:latest
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# See https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#what-is-a-service
+services:
+  - postgres:latest
+
+variables:
+  # Configure postgres service (https://docs.gitlab.com/ee/ci/services/#postgres-service-example)
+  POSTGRES_DB: my_database
+  POSTGRES_USER: my_user
+  POSTGRES_PASSWORD: my_password
+
+# Cache modules in between jobs
+cache:
+  key:
+    files:
+      - package.json
+  paths:
+    - node_modules/
+
+# This is a basic example for a NodeJS project, not specifying build material
+# as not all projects build the same way.
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+
+test_job:
+  stage: test
+  script:
+    - npm install
+    - npm test
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
+  environment: production
+`;export{e as default};

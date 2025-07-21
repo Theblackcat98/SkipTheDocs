@@ -1,0 +1,21 @@
+const n=`---
+displayName: Consul.json
+toolName: consul.json
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.608515Z'
+---
+{
+  "bootstrap_expect": 1,
+  "client_addr": "0.0.0.0",
+  "data_dir": "/opt/consul",
+  "server": true,
+  "ui": true,
+  "log_level": "INFO",
+  "enable_syslog": true
+}
+`;export{n as default};

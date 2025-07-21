@@ -1,0 +1,40 @@
+const n=`---
+displayName: Salt.master.conf
+toolName: salt.master.conf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.631933Z'
+---
+#
+# The Salt Master configuration file
+#
+
+# The address of the interface to bind to
+interface: 0.0.0.0
+
+# The port to bind to
+#publish_port: 4505
+
+# The port for the returner
+#ret_port: 4506
+
+# The user to run the master as
+#user: root
+
+# The number of worker threads to start
+#worker_threads: 5
+
+# The location of the pillar data
+#pillar_roots:
+#  base:
+#    - /srv/pillar
+
+# The location of the file roots
+#file_roots:
+#  base:
+#    - /srv/salt
+`;export{n as default};

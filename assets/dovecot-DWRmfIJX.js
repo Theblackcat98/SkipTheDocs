@@ -1,0 +1,47 @@
+const n=`---
+displayName: Dovecot.conf
+toolName: dovecot.conf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.610273Z'
+---
+## Dovecot configuration file
+
+# Enable installed protocols
+!include_try /usr/share/dovecot/protocols.d/*.protocol
+
+# A comma separated list of IPs or hosts where to listen in for connections.
+# "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
+# If you want to specify ports, you can use something like 1.2.3.4:143.
+#
+#listen = *, ::
+
+# Base directory where to store runtime data.
+#base_dir = /var/run/dovecot/
+
+# Name of the user to use for the login process.
+#login_user = dovecot
+
+# SSL/TLS configuration
+ssl = required
+ssl_cert = </etc/dovecot/dovecot.pem
+ssl_key = </etc/doveetc/dovecot.key
+
+# Mail location
+mail_location = mbox:~/mail:INBOX=/var/mail/%u
+
+# Authentication
+auth_mechanisms = plain login
+
+passdb {
+  driver = pam
+}
+
+userdb {
+  driver = passwd
+}
+`;export{n as default};

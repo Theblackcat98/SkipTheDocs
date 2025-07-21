@@ -1,0 +1,24 @@
+const e=`---
+displayName: Helm.repositories.yaml
+toolName: helm.repositories.yaml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.616813Z'
+---
+apiVersion: ""
+generated: "0001-01-01T00:00:00Z"
+repositories:
+- caFile: ""
+  certFile: ""
+  insecure_skip_tls_verify: false
+  keyFile: ""
+  name: stable
+  pass_credentials_all: false
+  password: ""
+  url: https://charts.helm.sh/stable
+  username: ""
+`;export{e as default};
