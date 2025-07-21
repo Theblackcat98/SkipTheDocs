@@ -1,9 +1,13 @@
 ---
-toolName: "Copilot"
-author: "microsoft"
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Copilot
+toolName: Copilot
+author: microsoft
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.640820Z'
 ---
 
 // Place your tool sets here...

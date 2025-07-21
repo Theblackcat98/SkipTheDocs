@@ -1,9 +1,13 @@
 ---
-toolName: "awesome.rc.lua"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Awesome.rc.lua
+toolName: awesome.rc.lua
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.606115Z'
 ---
 -- Standard awesome library
 local gears = require("gears")

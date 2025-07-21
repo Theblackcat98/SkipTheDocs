@@ -1,9 +1,13 @@
 ---
-toolName: "zshrc"
-author: ""
-description: ""
-version: "1.0.0"
-repositoryUrl: "https://github.com/zsh-users/zsh"
+displayName: Zshrc
+toolName: zshrc
+author: ''
+description: ''
+tags: []
+version: 1.0.0
+repositoryUrl: https://github.com/zsh-users/zsh
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.639633Z'
 ---
 # Path to your oh-my-zsh installation.
 export ZSH="/home/user/.oh-my-zsh"

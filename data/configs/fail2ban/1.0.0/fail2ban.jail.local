@@ -1,9 +1,13 @@
 ---
-toolName: "fail2ban.jail.local"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Fail2ban.jail.local
+toolName: fail2ban.jail.local
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.611703Z'
 ---
 # /etc/fail2ban/jail.local
 #

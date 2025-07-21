@@ -1,9 +1,13 @@
 ---
-toolName: "kibana.yml"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Kibana.yml
+toolName: kibana.yml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.620139Z'
 ---
 #
 # ** THIS IS AN EXAMPLE CONFIGURATION FILE **

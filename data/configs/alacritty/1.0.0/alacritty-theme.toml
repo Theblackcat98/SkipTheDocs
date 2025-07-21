@@ -1,9 +1,13 @@
 ---
-toolName: "Alacritty"
-author: ""
-description: ""
-version: "1.0.0"
-repositoryUrl: "https://github.com/"
+displayName: Alacritty
+toolName: Alacritty
+author: ''
+description: ''
+tags: []
+version: 1.0.0
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.639982Z'
 ---
 # alacritty.toml - Tokyo Night theme for Alacritty terminal
 # A calm, dark theme that is easy on the eyes

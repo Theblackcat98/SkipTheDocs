@@ -1,9 +1,13 @@
 ---
-toolName: "dunstrc"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Dunstrc
+toolName: dunstrc
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.610665Z'
 ---
 [global]
     monitor = 0

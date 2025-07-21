@@ -1,9 +1,13 @@
 ---
-toolName: "postfix.main.cf"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Postfix.main.cf
+toolName: postfix.main.cf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.628605Z'
 ---
 # See /usr/share/postfix/main.cf.dist for a commented, more complete version
 

@@ -1,9 +1,13 @@
 ---
-toolName: "gnome.dconf"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Gnome.dconf
+toolName: gnome.dconf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.615382Z'
 ---
 [org/gnome/desktop/interface]
 clock-format='12h'

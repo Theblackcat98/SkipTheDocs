@@ -1,9 +1,13 @@
 ---
-toolName: "mate.dconf"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Mate.dconf
+toolName: mate.dconf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.623299Z'
 ---
 [org/mate/desktop/interface]
 gtk-theme='Mint-MATE'

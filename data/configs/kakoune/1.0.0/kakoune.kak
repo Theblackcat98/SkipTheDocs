@@ -1,9 +1,13 @@
 ---
-toolName: "kakoune.kak"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Kakoune.kak
+toolName: kakoune.kak
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.619381Z'
 ---
 # kakrc
 

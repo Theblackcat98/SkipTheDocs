@@ -1,9 +1,13 @@
 ---
-toolName: "Alacritty"
-author: "alacritty"
-description: "A cross-platform, OpenGL terminal emulator."
-version: "0.15.1"
-repositoryUrl: "https://github.com/alacritty/alacritty"
+displayName: Alacritty
+toolName: Alacritty
+author: alacritty
+description: A cross-platform, OpenGL terminal emulator.
+tags: []
+version: 0.15.1
+repositoryUrl: https://github.com/alacritty/alacritty
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.640376Z'
 ---
 
 # Alacritty TOML Configuration File

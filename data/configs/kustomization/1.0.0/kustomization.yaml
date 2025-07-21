@@ -1,9 +1,13 @@
 ---
-toolName: "kustomization.yaml"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Kustomization.yaml
+toolName: kustomization.yaml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.621891Z'
 ---
 #
 # Kustomize configuration file

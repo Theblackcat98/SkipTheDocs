@@ -1,9 +1,13 @@
 ---
-toolName: "jenkins.xml"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Jenkins.xml
+toolName: jenkins.xml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.619025Z'
 ---
 <?xml version='1.1' encoding='UTF-8'?>
 <hudson>

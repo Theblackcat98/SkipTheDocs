@@ -1,9 +1,13 @@
 ---
-toolName: "nanorc"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Nanorc
+toolName: nanorc
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.625426Z'
 ---
 ## Sample nanorc file
 ## Uncomment and edit the options you want to enable.

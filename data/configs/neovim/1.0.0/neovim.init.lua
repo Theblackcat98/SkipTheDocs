@@ -1,9 +1,13 @@
 ---
-toolName: "neovim.init.lua"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Neovim.init.lua
+toolName: neovim.init.lua
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.626097Z'
 ---
 -- init.lua
 

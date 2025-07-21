@@ -50,6 +50,10 @@ def validate_and_enrich():
                 continue
 
             file_path = os.path.join(root, file)
+
+            # Explicitly skip symbolic links to avoid errors
+            if os.path.islink(file_path):
+                continue
             
             # Extract info from path, e.g., .../data/configs/alacritty/1.0.0/config.toml
             path_parts = file_path.split(os.sep)

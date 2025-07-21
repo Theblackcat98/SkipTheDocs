@@ -1,9 +1,13 @@
 ---
-toolName: "spamassassin.local.cf"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Spamassassin.local.cf
+toolName: spamassassin.local.cf
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.634041Z'
 ---
 # These values can be overridden by user preferences.
 # See 'perldoc Mail::SpamAssassin::Conf' for details of what can be

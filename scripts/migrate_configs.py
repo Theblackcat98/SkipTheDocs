@@ -4,14 +4,31 @@ import re
 import yaml
 from datetime import datetime
 
+def find_project_root(start_path):
+    """
+    Finds the project root by searching upwards for a '.git' directory.
+    """
+    path = os.path.abspath(start_path)
+    while True:
+        if os.path.isdir(os.path.join(path, '.git')):
+            return path
+        parent_path = os.path.dirname(path)
+        if parent_path == path:
+            raise FileNotFoundError("Could not find project root (.git directory).")
+        path = parent_path
+
 def migrate_configs():
     """
     Migrates configuration files from the flat 'data/configs' directory to a new
     structured format: 'configs/<tool_name>/<version>/'.
     """
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    project_root = os.path.abspath(os.path.join(script_dir, '..', '..', '..'))
-    
+    try:
+        project_root = find_project_root(script_dir)
+    except FileNotFoundError as e:
+        print(e)
+        return
+
     # The original configs directory is the source
     source_dir = os.path.join(project_root, "data", "configs")
     # The new structure will be created within this same directory

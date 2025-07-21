@@ -1,9 +1,13 @@
 ---
-toolName: "filezilla.xml"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Filezilla.xml
+toolName: filezilla.xml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.612383Z'
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <FileZilla3 version="3.57.0" platform="*nix">

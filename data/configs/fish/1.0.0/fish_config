@@ -1,9 +1,13 @@
 ---
-toolName: "fish_config"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Fish_config
+toolName: fish_config
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.613117Z'
 ---
 # Fish configuration
 

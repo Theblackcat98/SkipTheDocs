@@ -1,9 +1,13 @@
 ---
-toolName: "waybar.json"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Waybar.json
+toolName: waybar.json
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.637164Z'
 ---
 {
     "layer": "top",

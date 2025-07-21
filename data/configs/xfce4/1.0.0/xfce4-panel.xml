@@ -1,9 +1,13 @@
 ---
-toolName: "xfce4-panel.xml"
-author: ""
-description: ""
-version: "0.0"
-repositoryUrl: "https://github.com/"
+displayName: Xfce4-panel.xml
+toolName: xfce4-panel.xml
+author: ''
+description: ''
+tags: []
+version: '0.0'
+repositoryUrl: https://github.com/
+relatedConfigs: ''
+lastModified: '2025-07-21T09:10:44.638108Z'
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 
