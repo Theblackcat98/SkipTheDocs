@@ -40,7 +40,7 @@ def migrate_configs():
             frontmatter = {
                 "displayName": tool_name.capitalize(),
                 "toolName": tool_name,
-                "author": tool_name,
+                "author": "",
                 "description": f"A configuration for {tool_name.capitalize()}.",
                 "tags": [],
                 "version": version,
@@ -53,14 +53,20 @@ def migrate_configs():
             
             with open(source_path, 'r') as f:
                 original_content = f.read()
+            
+            # Check if frontmatter already exists
+            if original_content.startswith("---"):
+                print(f"'{filename}' already has frontmatter. Moving without modification.")
+                shutil.move(source_path, destination_path)
+            else:
+                new_content = f"---\n{frontmatter_yaml}---\n{original_content}"
 
-            new_content = f"---\n{frontmatter_yaml}---\n{original_content}"
+                with open(destination_path, 'w') as f:
+                    f.write(new_content)
 
-            with open(destination_path, 'w') as f:
-                f.write(new_content)
-
-            print(f"Migrating and adding frontmatter to '{source_path}' -> '{destination_path}'")
-            os.remove(source_path)
+                print(f"Migrating and adding frontmatter to '{source_path}' -> '{destination_path}'")
+                os.remove(source_path)
+            
             processed_tools.add(tool_name)
 
     # Create the 'latest' symlinks
