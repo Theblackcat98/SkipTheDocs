@@ -158,8 +158,12 @@ documentation_files:
         response = call_llm(prompt, use_cache=(use_cache and self.cur_retry == 0))  # Use cache only if enabled and not retrying
 
         # --- Validation ---
-        yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
-        config_info = yaml.safe_load(yaml_str)
+        print(f"LLM response:\n{response}")  # Log the raw response for debugging
+        try:
+            yaml_str = response.strip().split("```yaml")[1].split("```")[0].strip()
+            config_info = yaml.safe_load(yaml_str)
+        except IndexError:
+            raise ValueError(f"Could not find YAML block in response:\n{response}")
 
         if not isinstance(config_info, dict):
             raise ValueError("LLM Output is not a dictionary")
