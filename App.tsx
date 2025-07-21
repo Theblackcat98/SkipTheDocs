@@ -344,75 +344,12 @@ const App: React.FC = () => {
       </main>
 
       {/* Config Modal */}
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        {activeModalConfig && (
-          <>
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h2 className="text-2xl font-bold text-gray-100">{activeModalConfig.toolName}</h2>
-                <p className="text-indigo-400 font-mono text-sm">{activeModalConfig.fileName}</p>
-              </div>
-              <button
-                onClick={handleModalDownload}
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-500 transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download
-              </button>
-            </div>
-
-            {activeModalConfig.relatedConfigs && activeModalConfig.relatedConfigs.length > 0 && (
-              <div className="mb-6">
-                <h3 className="text-sm font-medium text-gray-300 mb-2">Related Configs</h3>
-                <div className="flex flex-wrap gap-2">
-                  {activeModalConfig.relatedConfigs.map((related, index) => {
-                    const relatedConfig = configs.find(c => 
-                      c.fileName === related || c.id === related
-                    );
-                    
-                    if (!relatedConfig) return null;
-                    
-                    return (
-                      <a
-                        key={index}
-                        href={`#${relatedConfig.id}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          closeModal();
-                          // Scroll to the related config
-                          document.getElementById(relatedConfig.id)?.scrollIntoView({
-                            behavior: 'smooth'
-                          });
-                          // Highlight the related config
-                          const element = document.getElementById(relatedConfig.id);
-                          if (element) {
-                            element.classList.add('ring-2', 'ring-indigo-500');
-                            setTimeout(() => {
-                              element.classList.remove('ring-2', 'ring-indigo-500');
-                            }, 2000);
-                          }
-                        }}
-                        className="inline-flex items-center gap-1 px-3 py-1 text-sm text-indigo-400 bg-indigo-900/30 rounded-full border border-indigo-800 hover:bg-indigo-800/30 transition-colors"
-                      >
-                        {relatedConfig.displayName || relatedConfig.toolName}
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
-            <div className="bg-gray-800 rounded-lg p-4 overflow-auto max-h-[60vh]">
-              <pre className="text-sm text-gray-200">
-                <code>{activeModalConfig.content}</code>
-              </pre>
-            </div>
-          </>
-        )}
-      </Modal>
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={closeModal}
+        config={activeModalConfig}
+        onDownload={handleModalDownload}
+      />
 
       {/* Submission Form Modal */}
       <Modal isOpen={isSubmissionFormOpen} onClose={() => setIsSubmissionFormOpen(false)}>
