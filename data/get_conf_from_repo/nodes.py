@@ -3,6 +3,7 @@ import re
 import yaml
 from pocketflow import Node, BatchNode
 from utils.crawl_github_files import crawl_github_files
+from utils.crawl_local_files import crawl_local_files
 from utils.call_llm import call_llm
 
 
@@ -58,6 +59,16 @@ class FetchRepo(Node):
                 exclude_patterns=prep_res["exclude_patterns"],
                 max_file_size=prep_res["max_file_size"],
                 use_relative_paths=prep_res["use_relative_paths"],
+            )
+        else:
+            print(f"Crawling directory: {prep_res['local_dir']}...")
+
+            result = crawl_local_files(
+                directory=prep_res["local_dir"],
+                include_patterns=prep_res["include_patterns"],
+                exclude_patterns=prep_res["exclude_patterns"],
+                max_file_size=prep_res["max_file_size"],
+                use_relative_paths=prep_res["use_relative_paths"]
             )
 
         # Convert dict to list of tuples: [(path, content), ...]
